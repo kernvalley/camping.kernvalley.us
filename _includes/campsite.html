@@ -3,11 +3,12 @@
 		<meta itemprop="latitude" content="{{ include.geo.latitude }}" />
 		<meta itemprop="longitude" content="{{ include.geo.longitude }}" />
 	</div>
+	<meta itemprop="priceRange" content="{{ include.priceRange | default: '$' }}">
 	<img slot="icon" src="{{ include.icon | default: '/img/tent.svg' }}" height="32" width="32" alt="icon" loading="lazy" decoding="async "/>
 	<div slot="popup">
 		<h4 itemprop="name">{{ include.name }}</h4>
 		{% if include.image %}<figure itemprop="image" itemtype="https://schema.org/ImageObject" itemscope="">
-			<img src="{{ include.image.url }}" alt="{{ include.name }}" height="{{ include.image.height }}" width="{{ include.image.width }}" decoding="async" loading="lazy" crossorigin="anonymous" />
+			<img src="{{ include.image.url }}" alt="{{ include.name }}" height="{{ include.image.height }}" width="{{ include.image.width }}" decoding="async" loading="lazy" crossorigin="anonymous" itemprop="url" />
 			{% if include.image.caption %}<figcaption itemprop="caption">{{ include.image.caption }}</figcaption>{% endif %}
 		</figure>{% endif %}
 		{% if include.description %}<blockquote itemprop="description">{{ include.description }}</blockquote>{% endif %}
@@ -29,7 +30,7 @@
 				</a>
 			</div>{% endif %}
 			{% if include.telephone %}<div>
-				<a href="tel:{{ include.telephone }}" itemprop="telephone">
+				<a href="tel:{{ include.telephone }}" itemprop="telephone" content="{{ include.telephone }}">
 					{% include icon.html icon="call-start" height="16" width="16" %}
 					<span>{{ include.telephone | replace: '+1-', '' }}</span>
 				</a>
