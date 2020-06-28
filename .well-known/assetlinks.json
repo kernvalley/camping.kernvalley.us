@@ -1,0 +1,12 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.krv_camping.twa",
+    "sha256_cert_fingerprints": [
+      "24:07:63:C0:A6:F9:41:06:D2:B9:9B:EC:87:1D:07:6A:99:8E:56:45:86:5F:F0:FC:EF:19:2E:65:68:0A:32:FA",
+      "3E:F2:B5:DF:3A:B3:CD:C4:B5:88:EB:BE:AD:93:94:29:F4:A5:46:BD:13:92:0D:14:61:44:50:19:15:35:CA:83",
+      "24:07:63:C0:A6:F9:41:06:D2:B9:9B:EC:87:1D:07:6A:99:8E:56:45:86:5F:F0:FC:EF:19:2E:65:68:0A:32:FA"
+    ]
+  }
+}]

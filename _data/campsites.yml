@@ -1,6 +1,7 @@
 - name: Rivernook Campground
   identifier: 4e4c5708-845d-4f41-8b17-1b257f9cca66
   icon: 'img/tent.svg'
+  priceRange: $$$
   description: "We are the biggest privately owned campground along the Kern River. With full Hook Up RV, partial RV, and dry tent camping sites."
   address:
     streetAddress: 14001 Sierra Way
@@ -10,5 +11,9 @@
   geo:
     longitude: -118.423541
     latitude: 35.763118
+  image:
+    url: "https://i.imgur.com/FV8oHW0m.jpg"
+    height: 213
+    width: 320
   url: "https://www.rivernookcampground.com"
   telephone: +1-760-376-2705
