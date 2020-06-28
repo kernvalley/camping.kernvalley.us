@@ -38,7 +38,7 @@ repository:
 #   type: application/rss+xml
 icons: '/img/icons.svg'
 # discus-identifier:
-# google-analytics:
+google-analytics: UA-114369281-2
 # ad-sense:
 # webmaster-verifications:
 #   google:
