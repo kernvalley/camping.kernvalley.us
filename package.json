@@ -1,8 +1,8 @@
 {
-  "name": "jekyll-template",
+  "name": "kern-valley-camping",
   "version": "1.0.0",
   "private": true,
-  "description": "A template repository for Jekyll sites, including skeleton JS, CSS, SVGs, fonts, etc.",
+  "description": "Map of camping sites in and around the Kern River Valley",
   "config": {
     "icons": "./_data/icons.csv",
     "serve": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shgysk8zer0/jekyll-template.git"
+    "url": "git+https://github.com/kernvalley/camping.kernvalley.us.git"
   },
   "keywords": [
     "jekyll",
@@ -33,9 +33,9 @@
   "author": "Chris Zuber <shgysk8zer0@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shgysk8zer0/jekyll-template/issues"
+    "url": "https://github.com/kernvalley/camping.kernvalley.us/issues"
   },
-  "homepage": "https://github.com/shgysk8zer0/jekyll-template",
+  "homepage": "https://github.com/kernvalley/camping.kernvalley.us",
   "scripts": {
     "test": "npm run lint",
     "start": "npm run netlify",
