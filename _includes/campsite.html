@@ -14,7 +14,7 @@
 		{% if include.address %}<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
 			<meta itemprop="name" content="{{ include.address.name | default: include.name }}" />
 			<div>
-				<div itemprop="streetAddress">{{ include.streetAddress }}</div>
+				<div itemprop="streetAddress">{{ include.address.streetAddress }}</div>
 				{% if include.address.postOfficeBoxNumber %}<div itemprop="postOfficeBoxNumber">{{ include.address.postOfficeBoxNumber }}</div>{% endif %}
 				<span itempro="addressLocality">{{ include.address.addressLocality }}</span>,
 				<span itemprop="addressRegion">{{ include.address.addressRegion | default: 'CA' }}</span>
