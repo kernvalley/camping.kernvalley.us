@@ -1,6 +1,6 @@
 author: Chris Zuber
-title: Jekyll Template Demo
-# url: ''
+title: Kern Valley Camping
+url: 'https://camping.kernvalley.us'
 markdown: kramdown
 version: 1.0.0
 timezone: America/Los_Angeles
@@ -14,32 +14,28 @@ robots: 'follow, index'
 referrer: origin-when-cross-origin
 manifest: /manifest.json
 tiles-config: /browserconfig.xml
-# service_worker: "./service-worker.js"
+service_worker: "./service-worker.js"
 og-type: website
 description: "A template repository for Jekyll sites, including skeleton JS, CSS, SVGs, fonts, etc."
 mobile-web-app-capable: true
-# canonical: ''
+canonical: 'https://camping.kernvalely.us'
 keywords:
-- jekyll
-- static
-- template
-- github
-- CSS3
-- HTML5
-- responsive design
-- progressive web app
-- pwa
-- ecmascript
-- javascript
-- es6
+- kern valley
+- kern river valley
+- map
+- camping
+- campground
+- kern river
+- lake isabella
+- isabella lake
 repository:
-  username: shgysk8zer0
-  project: jekyll-template
-  title: Jekyll Template
+  username: kernvalley
+  project: camping.kernvalley.us
+  title: Kern Valley Camping
 # twitter:
-feed:
-  url: /feed.rss
-  type: application/rss+xml
+# feed:
+#   url: /feed.rss
+#   type: application/rss+xml
 icons: '/img/icons.svg'
 # discus-identifier:
 # google-analytics:

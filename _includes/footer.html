@@ -17,11 +17,11 @@
 			</div>
 		{% endif %}
 		<div class="cols inline-block">
-			<a class="block" href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="sameAs">
+			<a class="block" href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="sameAs">
 				{% include icon.html icon="web-browser" class="current-color icon social-icon" %}
-				<span>My Website</span>
+				<span>Homepage</span>
 			</a>
-			<a class="block" href="https://twitter.com/shgysk8zer0" target="_blank" rel="external noopener" itemprop="sameAs">
+			<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener" itemprop="sameAs">
 				{% include icon.html icon="twitter" class="icon social-icon" %}
 				<span>On Twitter</span>
 			</a>
@@ -31,6 +31,14 @@
 			</a>
 		</div>
 	</div>
+	{% if site.service_worker %}
+		<div class="flex row center">
+			<button is="pwa-install" class="btn btn-primary btn-big btn-wide" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="">
+				{% include icon.html icon="system-software-install" %}
+				<span>Install</span>
+			</button>
+		</div>
+	{% endif %}
 	<hr />
 	<div class="copyright">
 		<github-user user="{{ site.repository.username }}">
@@ -38,10 +46,9 @@
 			<div slot="footer">
 				<span>&copy;</span>
 				<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
-				<span itemprop="copyrightHolder" itemtype="https://schema.org/Person" itemscope="" hidden="">
-					<a href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="url">
-						<span itemprop="givenName">Chris</span>
-						<span itemprop="familyName">Zuber</span>
+				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+					<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+						<span itemprop="name">KernValley.US</span>
 					</a>
 				</span>
 			</div>
