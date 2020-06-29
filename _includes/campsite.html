@@ -1,4 +1,4 @@
-<leaflet-marker latitude="{{ include.geo.latitude }}" longitude="{{ include.geo.longitude }}" title="{{ include.name }}" slot="markers" id="{{ include.uuid }}" itemtype="https://schema.org/Campground" itemscope="">
+<leaflet-marker latitude="{{ include.geo.latitude }}" longitude="{{ include.geo.longitude }}" title="{{ include.name }}" slot="markers" id="{{ include.identifier }}" itemtype="https://schema.org/Campground" itemscope=""{% if include.closed == true %} class="closed" hidden=""{% endif %}>
 	<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 		<meta itemprop="latitude" content="{{ include.geo.latitude }}" />
 		<meta itemprop="longitude" content="{{ include.geo.longitude }}" />
@@ -41,6 +41,10 @@
 					<span>{{ include.email }}</span>
 				</a>
 			</div>{% endif %}
+			<button type="button" is="share-button" url="/#{{ include.identifier }}" text="{{ include.name }}" hidden="">
+				{% include icon.html icon="share" width="16" height="16" %}
+				<span>Share</span>
+			</button>
 		</footer>
 	</div>
 </leaflet-marker>

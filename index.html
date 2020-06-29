@@ -4,6 +4,7 @@ title: Home
 pinned: true
 referrer: no-referrer
 description: Map of camping sites in and around the Kern River Valley
+imgur: 'https://i.imgur.com/6xZrS3m.jpg'
 tags:
 - kern valley
 - kern river valley
@@ -14,11 +15,24 @@ tags:
 - lake isabella
 - isabella lake
 ---
+<form name="search" hidden="">
+	<input type="search" name="query" placeholder="Search by name" list="campgrounds-list" autocomplete="off" required="" />
+	<datalist id="campgrounds-list"></datalist>
+	<button type="submit" class="btn btn-accept" title="Search">
+			{% include icon.html icon="search" %}
+			<span class="mobile-hidden">Search</span>
+	</button>
+	<button type="reset" class="btn btn-reject" title="Clear">
+		{% include icon.html icon="x" %}
+		<span class="mobile-hidden">Clear</span>
+	</button>
+</form>
 <leaflet-map center="35.68490811606957,-118.42180275481842" zoom="11" zoomcontrol="" detectretina="" aria-hidden="true">
 	{% for camp in site.data.campsites %}
 		{% include campsite.html
 			identifier=camp.identifier
 			name=camp.name
+			closed=camp.closed
 			description=camp.description
 			image=camp.image
 			geo=camp.geo

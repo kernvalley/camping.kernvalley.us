@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Privacy Policy
 - Contact Page
 - App icons & TWA asset links
+- Search handler
+- Share buttons
+
+### Fixed
+- Correctly set `<meta property="og:image">`
 
 ### Changed
 - Theme colors
