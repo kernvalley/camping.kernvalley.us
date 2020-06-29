@@ -1,6 +1,6 @@
 - name: Rivernook Campground
   identifier: 4e4c5708-845d-4f41-8b17-1b257f9cca66
-  icon: 'img/tent.svg'
+  # icon: 'img/tent.svg'
   priceRange: $$$
   description: "We are the biggest privately owned campground along the Kern River. With full Hook Up RV, partial RV, and dry tent camping sites."
   address:
@@ -9,11 +9,44 @@
     addressRegion: CA
     postalCode: 93238
   geo:
-    longitude: -118.423541
     latitude: 35.763118
+    longitude: -118.423541
   image:
     url: "https://i.imgur.com/FV8oHW0m.jpg"
     height: 213
     width: 320
   url: "https://www.rivernookcampground.com"
   telephone: +1-760-376-2705
+- name: Camp 9
+  closed: true
+  identifier: e687da4f-a09d-4b86-bafd-60a350db9fac
+  priceRange: $
+  description: |
+    Camp 9, a year-round facility, rests on the shores of Lake Isabella, a high
+    desert reservoir. Its proximity to the lake and the Upper Kern River makes
+    the facility popular among boaters, rafters and anglers. The camp is also a
+    favorite among RV campers, with ample parking available to accommodate both
+    trailers and motorized watercraft.
+  geo:
+    latitude: 35.686582
+    longitude: -118.439904
+  url: "https://www.recreation.gov/camping/campgrounds/234011"
+- name: Auxillary Dam Campground
+  identifier: 0d9d2acd-117f-4584-bde0-2a95cbcc9870
+  url: "https://www.fs.usda.gov/recarea/sequoia/recarea/?recid=79632"
+  description: |
+    Located on the southern end of Lake Isabella off Highway 178 near the town of
+    Lake Isabella, this facility offers flush toilets, drinking water, trash service,
+    a dump station and some campsites with stoves and picnic tables above the high
+    water mark. Below the high-water mark, visitors can drive their vehicles
+    to the shoreline and camp at the water’s edge. Below the high-water mark
+    portable toilets and trash receptacles are provided for visitor convenience
+    during the summer.
+  geo:
+    latitude: 35.642401
+    longitude: -118.469838
+- name: Paradise Cove Campground
+  identifier: 0eeea7f7-c240-42cd-b235-9b3a456e1f22
+  geo:
+    latitude: 35.649494
+    longitude: -118.427562
