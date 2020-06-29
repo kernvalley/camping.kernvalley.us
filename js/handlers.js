@@ -9,6 +9,7 @@ export function hashChange() {
 		if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
 			marker.hidden = false;
 			marker.open = true;
+			marker.closest('leaflet-map').scrollIntoView({block: 'start', behavior: 'smooth'});
 		} else {
 			$('leaflet-marker').forEach(el => el.open = false);
 		}
