@@ -31,6 +31,7 @@ tags:
 	{% for camp in site.data.campsites %}
 		{% include campsite.html
 			identifier=camp.identifier
+			icon=camp.icon
 			name=camp.name
 			closed=camp.closed
 			description=camp.description
@@ -40,6 +41,7 @@ tags:
 			telephone=camp.telephone
 			email=camp.email
 			address=camp.address
+			priceRange=camp.priceRange
 		%}
 	{% endfor %}
 </leaflet-map>

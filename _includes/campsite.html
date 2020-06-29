@@ -4,7 +4,7 @@
 		<meta itemprop="longitude" content="{{ include.geo.longitude }}" />
 	</div>
 	<meta itemprop="priceRange" content="{{ include.priceRange | default: '$' }}">
-	<img slot="icon" src="{{ include.icon | default: '/img/tent.svg' }}" height="32" width="32" alt="icon" loading="lazy" decoding="async "/>
+	<img slot="icon" src="{{ include.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" height="32" width="32" alt="icon" loading="lazy" decoding="async "/>
 	<div slot="popup">
 		<h4 itemprop="name">{{ include.name }}</h4>
 		{% if include.image %}<figure itemprop="image" itemtype="https://schema.org/ImageObject" itemscope="">
