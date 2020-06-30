@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 <!-- markdownlint-disable -->
 
+## [v1.0.0] - 2020-06-30
+
 ### Added
 - Google Analytics
 - Data file for campgrounds
@@ -16,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Search handler
 - Share buttons
 - Submodules now watched by dependabot
+- Update URL hash on popup close [#5](https://github.com/kernvalley/camping.kernvalley.us/issues/5)
 
 ### Fixed
 - Correctly set `<meta property="og:image">`
