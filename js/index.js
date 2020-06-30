@@ -13,7 +13,7 @@ import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import {$, ready} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 import { registerMapSearch } from './functions.js';
-import {hashChange, markerOpen} from './handlers.js';
+import { hashChange, markerOpen, markerClose } from './handlers.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.documentElement.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
@@ -21,7 +21,9 @@ document.documentElement.classList.toggle('no-details', document.createElement('
 
 ready().then(async () => {
 	registerMapSearch();
+
 	addEventListener('hashchange', hashChange);
+
 	$('[data-scroll-to]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
 		target.scrollIntoView({
@@ -31,6 +33,7 @@ ready().then(async () => {
 	});
 
 	$('leaflet-marker').on('open', markerOpen);
+	$('leaflet-marker').on('close', markerClose);
 
 	$('[data-show]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-show]').dataset.show);

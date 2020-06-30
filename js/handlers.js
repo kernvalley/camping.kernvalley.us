@@ -2,14 +2,25 @@ function $(selector, base = document) {
 	return Array.from(base.querySelectorAll(selector));
 }
 
-export function hashChange() {
+export function hashChange({oldURL = ''} = {}) {
+	if (oldURL.includes('#')) {
+		const [,hash = ''] = oldURL.split('#', 2);
+
+		if (hash !== '') {
+			const target = document.getElementById(hash);
+
+			if (target instanceof HTMLElement && target.tagName === 'LEAFLET-MARKER') {
+				target.close();
+			}
+		}
+	}
+
 	if (location.hash !== '') {
 		const marker = document.getElementById(location.hash.substr(1));
 
 		if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
 			marker.hidden = false;
 			marker.open = true;
-			marker.closest('leaflet-map').scrollIntoView({block: 'start', behavior: 'smooth'});
 		} else {
 			$('leaflet-marker').forEach(el => el.open = false);
 		}
@@ -19,6 +30,12 @@ export function hashChange() {
 export function markerOpen() {
 	if (this.id !== '') {
 		location.href = `#${this.id}`;
+	}
+}
+
+export function markerClose() {
+	if (location.hash.substr(1) === this.id) {
+		location.hash = '';
 	}
 }
 
