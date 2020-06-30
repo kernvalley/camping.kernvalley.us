@@ -10,7 +10,7 @@ export function hashChange({oldURL = ''} = {}) {
 			const target = document.getElementById(hash);
 
 			if (target instanceof HTMLElement && target.tagName === 'LEAFLET-MARKER') {
-				target.close();
+				target.open = false;
 			}
 		}
 	}
