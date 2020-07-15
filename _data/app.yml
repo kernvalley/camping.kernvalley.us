@@ -1,6 +1,6 @@
 name: Kern Valley Camping
 shortName: KRV Camping
-version: 1.0.1
+version: 1.0.2
 display: standalone
 description: "Map of camping sites in and around the Kern River Valley"
 icons-file: /img/icons.svg
