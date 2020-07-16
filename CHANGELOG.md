@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 <!-- markdownlint-disable -->
+## [v1.0.2] - 2020-07-15
+
+### Updated
+- Misc. changes for components to use external stylesheets
 
 ## [v1.0.1] - 2020-06-30
 
