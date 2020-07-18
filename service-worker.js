@@ -48,15 +48,20 @@ self.addEventListener('fetch', event => {
 				}
 			} else if (Array.isArray(config.fresh) && config.fresh.includes(event.request.url)) {
 				if (navigator.onLine) {
-					const [resp, cache] = await Promise.all([
-						fetch(event.request),
-						caches.open(config.version),
-					]);
+					try {
+						const [resp, cache] = await Promise.all([
+							fetch(event.request),
+							caches.open(config.version),
+						]);
 
-					if (resp.ok) {
-						cache.put(event.request, resp.clone());
+						if (resp.ok) {
+							cache.put(event.request, resp.clone());
+						}
+						return resp;
+					} catch (err) {
+						console.error(err);
+						return await caches.match(event.request);
 					}
-					return resp;
 				} else {
 					return caches.match(event.request);
 				}
