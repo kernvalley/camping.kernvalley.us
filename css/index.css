@@ -14,6 +14,12 @@
 @import url("./layout.css");
 @import url("./contact.css");
 
+leaflet-map::part(popup) {
+	max-height: 60vh;
+	max-width: 60vw;
+	overflow: auto;
+}
+
 input[hidden] + label[for].btn-toggle {
 	background-color: var(--button-disabled-background);
 	margin: 0.3rem;

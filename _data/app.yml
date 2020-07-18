@@ -1,7 +1,10 @@
 name: Kern Valley Camping
 shortName: KRV Camping
-version: 1.0.2
+version: 1.0.3
 display: standalone
+orientation: any
+lang: en
+dir: ltr
 description: "Map of camping sites in and around the Kern River Valley"
 icons-file: /img/icons.svg
 theme:
@@ -10,7 +13,8 @@ theme:
 icons:
 - src: /img/favicon.svg
   type: image/svg+xml
-  sizes: any
+  sizes: 192x192
+  purpose: any maskable
 - src: /img/apple-touch-icon.png
   rel: apple-touch-icon
   type: image/png
@@ -18,9 +22,11 @@ icons:
 - src: /img/icon-512.png
   type: image/png
   sizes: 512x512
+  purpose: any maskable
 - src: /img/icon-192.png
   type: image/png
   sizes: 192x192
+  purpose: any maskable
 - src: /img/icon-32.png
   type: image/png
   sizes: 32x32
