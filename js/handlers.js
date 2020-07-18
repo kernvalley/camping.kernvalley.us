@@ -3,7 +3,6 @@ import { site } from './consts.js';
 
 export async function stateHandler({ state }) {
 	const { uuid = null, longitude = NaN, latitude = NaN, title = null, body = null } = state || {};
-	console.info({uuid, longitude, latitude, title, body, state});
 
 	if (typeof uuid === 'string') {
 		const marker = document.getElementById(uuid);
@@ -66,6 +65,8 @@ export async function stateHandler({ state }) {
 			map.append(marker);
 			marker.open = true;
 		}
+	} else if (state === null) {
+		document.title = `Home | ${site.title}`;
 	}
 }
 
