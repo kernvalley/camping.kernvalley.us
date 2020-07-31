@@ -5,7 +5,6 @@ repo,img/octicons/repo.svg
 calendar,img/octicons/calendar.svg
 password,img/adwaita-icons/status/dialog-password.svg
 comments,img/octicons/comment-discussion.svg
-search,img/octicons/search.svg
 issue-opened,img/octicons/issue-opened.svg
 linkedin,img/logos/linkedin.svg
 facebook,img/logos/facebook.svg
@@ -25,7 +24,8 @@ bottom,img/adwaita-icons/actions/go-bottom.svg
 next,img/adwaita-icons/actions/go-next.svg
 prev,img/adwaita-icons/actions/go-previous.svg
 refresh,img/adwaita-icons/actions/view-refresh.svg
-share,img/adwaita-icons/places/folder-publicshare.svg
+search,img/octicons/search.svg
+public-share,img/adwaita-icons/places/folder-publicshare.svg
 close,img/adwaita-icons/actions/window-close.svg
 pin,img/adwaita-icons/actions/view-pin.svg
 video,img/adwaita-icons/places/folder-videos.svg

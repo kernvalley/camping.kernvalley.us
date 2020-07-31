@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- "Under Construction" notification
+
+### Changed
+- Various dependency & workflow updates
+- Import updates to some components
+
+### Fixed
+- Add missing search icon
+
+### Removed
+- Duplicate form styles (use CDN CSS `.form-group` rules)
+
 ## [v 1.0.3] - 2020-07-18
 
 ### Changed

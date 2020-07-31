@@ -1,6 +1,8 @@
 :root {
 	--accent-color-light: #008000;
 	--accent-color-dark: var(--accent-color-light);
+	--button-primary-background-dark: var(--accent-color-dark);
+	--button-primary-background-light: var(--button-primary-background-dark);
 	--button-active-background: #0B550B;
 	--scrollbar-track: var(--primary-color);
 	--scrollbar-color: var(--accent-color);

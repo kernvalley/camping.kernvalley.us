@@ -10,32 +10,21 @@
 @import url("https://cdn.kernvalley.us/css/core-css/animations.css");
 @import url("https://cdn.kernvalley.us/css/core-css/scrollbar.css");
 @import url("https://cdn.kernvalley.us/css/core-css/accordion.css");
+@import url("https://cdn.kernvalley.us/css/core-css/forms.css");
 @import url("./vars.css");
 @import url("./layout.css");
 @import url("./contact.css");
 
-leaflet-map::part(popup) {
-	max-height: 60vh;
-	max-width: 60vw;
-	overflow: auto;
+html-notification::part(title) {
+	font-size: 0.9rem;
 }
 
-input[hidden] + label[for].btn-toggle {
-	background-color: var(--button-disabled-background);
-	margin: 0.3rem;
-	transition: background-color 300ms ease-in-out;
+html-notification::part(body) {
+	line-height: 1.2;
 }
 
-input[hidden]:checked + label[for].btn-toggle {
-	background-color: var(--button-background);
-}
-
-input[hidden]:not(:checked) + label[for].btn-toggle .when-checked {
-	display: none;
-}
-
-input[hidden]:checked + label[for].btn-toggle .when-unchecked {
-	display: none;
+html-notification::part(image) {
+	width: 100%;
 }
 
 img.avatar {
