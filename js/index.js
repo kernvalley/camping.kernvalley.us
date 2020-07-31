@@ -11,7 +11,7 @@ import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-
+import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import { registerMapSearch } from './functions.js';
 import { hashChange, stateHandler } from './handlers.js';
 import { site } from './consts.js';
@@ -24,6 +24,55 @@ ready().then(async () => {
 	if (location.pathname === '/') {
 		registerMapSearch();
 		addEventListener('popstate', stateHandler);
+
+		if (! localStorage.hasOwnProperty('no-show')) {
+			new HTMLNotificationElement('Under Construction', {
+				icon: '/img/favicon.svg',
+				body: 'Kern Valley Camping is still under construction',
+				image: 'https://i.imgur.com/6xZrS3mm.jpg',
+				tag: 'construction',
+				dir: 'ltr',
+				lang: 'en',
+				vibrate: 0,
+				requireInteraction: true,
+				data: {
+					share: {
+						title: 'Kern Valley Camping',
+						text: 'Map of camping sites in and around the Kern River Valley',
+						url: location.origin,
+					},
+					home: {
+						url: 'https://kernvalley.us',
+					}
+				},
+				actions: [{
+					title: 'Share',
+					action: 'share',
+					icon: '/img/adwaita-icons/places/folder-publicshare.svg',
+				}, {
+					title: 'Dismiss',
+					action: 'close',
+					icon: '/img/octicons/x.svg',
+				}]
+			}).addEventListener('notificationclick', ({ action, notification }) => {
+				switch (action) {
+					case 'close':
+						notification.close();
+						break;
+
+					case 'share':
+						if (navigator.canShare({ title: document.title, url: location.href })) {
+							const { title, text, url } = notification.data.share;
+							navigator.share({ title, url, text });
+						}
+						break;
+					case 'home':
+						location.href = notification.data.home.url;
+						break;
+				}
+			});
+		}
+
 
 		Promise.all([
 			customElements.whenDefined('leaflet-map'),

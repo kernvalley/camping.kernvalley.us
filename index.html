@@ -15,19 +15,19 @@ tags:
 - lake isabella
 - isabella lake
 ---
-<form name="search" hidden="">
-	<input type="search" name="query" placeholder="Search by name" list="campgrounds-list" autocomplete="off" required="" />
-	<datalist id="campgrounds-list"></datalist>
-	<button type="submit" class="btn btn-accept" title="Search">
-			{% include icon.html icon="search" %}
-			<span class="mobile-hidden">Search</span>
-	</button>
-	<button type="reset" class="btn btn-reject" title="Clear">
-		{% include icon.html icon="x" %}
-		<span class="mobile-hidden">Clear</span>
-	</button>
-</form>
-<leaflet-map center="35.68490811606957,-118.42180275481842" zoom="11" zoomcontrol="" detectretina="" aria-hidden="true">
+<leaflet-map class="custom-element" center="35.68490811606957,-118.42180275481842" zoom="11" toolbar="" zoomcontrol="" detectretina="" aria-hidden="true">
+	<form name="search" class="if-defined" slot="toolbar">
+		<input type="search" class="input inline-block" name="query" placeholder="Search by name" list="campgrounds-list" autocomplete="off" required="" />
+		<datalist id="campgrounds-list"></datalist>
+		<button type="submit" class="btn btn-accept" title="Search" hidden="">
+				{% include icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+		</button>
+		<button type="reset" class="btn btn-reject" title="Clear" hidden="">
+			{% include icon.html icon="x" %}
+			<span class="mobile-hidden">Clear</span>
+		</button>
+	</form>
 	{% for camp in site.data.campsites %}
 		{% include campsite.html
 			identifier=camp.identifier
