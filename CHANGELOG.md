@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.4] - 2020-09-06
+
 ### Added
 - "Under Construction" notification
+- Preloading of assets
+- Different sized background images
+- GA tracking of external link clicks
 
 ### Changed
 - Various dependency & workflow updates
@@ -16,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Add missing search icon
+- Disable bash script linting due to issue with `.rvmrc`
 
 ### Removed
 - Duplicate form styles (use CDN CSS `.form-group` rules)

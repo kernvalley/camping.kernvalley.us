@@ -1,3 +1,4 @@
 - href: /css/index.css
   rel: stylesheet
+  referrerPolicy: no-referrer
   media: all
