@@ -17,103 +17,85 @@ import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { registerMapSearch } from './functions.js';
 import { hashChange, stateHandler } from './handlers.js';
 import { site, GA } from './consts.js';
+import { outbound, madeCall } from './analytics.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.documentElement.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.documentElement.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
 if (typeof GA === 'string' && GA.length !== 0) {
-	importGa(GA).then(async () => {
-		/* global ga */
-		ga('create', ga, 'auto');
-		ga('set', 'transport', 'beacon');
-		ga('send', 'pageview');
+	requestIdleCallback(() => {
+		importGa(GA).then(async () => {
+			/* global ga */
+			ga('create', ga, 'auto');
+			ga('set', 'transport', 'beacon');
+			ga('send', 'pageview');
 
+			await ready();
 
-		function outbound() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'outbound',
-				eventAction: 'click',
-				eventLabel: this.href,
-				transport: 'beacon',
-			});
-		}
-
-		function madeCall() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'call',
-				eventLabel: 'Called',
-				transport: 'beacon',
-			});
-		}
-
-		await ready();
-
-		$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
-		$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
-
+			$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
+			$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
+		});
 	});
 }
-
 
 Promise.allSettled([
 	ready(),
 	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 ]).then(async () => {
 	if (location.pathname === '/') {
-		registerMapSearch();
-		addEventListener('popstate', stateHandler);
+		requestIdleCallback(() => {
+			registerMapSearch();
+			window.addEventListener('popstate', stateHandler);
 
-		if (! localStorage.hasOwnProperty('no-show')) {
-			new HTMLNotificationElement('Under Construction', {
-				icon: '/img/favicon.svg',
-				body: 'Kern Valley Camping is still under construction',
-				image: 'https://i.imgur.com/6xZrS3mm.jpg',
-				tag: 'construction',
-				dir: 'ltr',
-				lang: 'en',
-				vibrate: 0,
-				requireInteraction: true,
-				data: {
-					share: {
-						title: 'Kern Valley Camping',
-						text: 'Map of camping sites in and around the Kern River Valley',
-						url: location.origin,
-					},
-					home: {
-						url: 'https://kernvalley.us',
-					}
-				},
-				actions: [{
-					title: 'Share',
-					action: 'share',
-					icon: '/img/adwaita-icons/places/folder-publicshare.svg',
-				}, {
-					title: 'Dismiss',
-					action: 'close',
-					icon: '/img/octicons/x.svg',
-				}]
-			}).addEventListener('notificationclick', ({ action, notification }) => {
-				switch (action) {
-					case 'close':
-						notification.close();
-						break;
-
-					case 'share':
-						if (navigator.canShare({ title: document.title, url: location.href })) {
-							const { title, text, url } = notification.data.share;
-							navigator.share({ title, url, text });
+			if (! localStorage.hasOwnProperty('no-show')) {
+				new HTMLNotificationElement('Under Construction', {
+					icon: '/img/favicon.svg',
+					body: 'Kern Valley Camping is still under construction',
+					image: 'https://i.imgur.com/6xZrS3mm.jpg',
+					tag: 'construction',
+					dir: 'ltr',
+					lang: 'en',
+					vibrate: 0,
+					requireInteraction: true,
+					data: {
+						share: {
+							title: 'Kern Valley Camping',
+							text: 'Map of camping sites in and around the Kern River Valley',
+							url: location.origin,
+						},
+						home: {
+							url: 'https://kernvalley.us',
 						}
-						break;
-					case 'home':
-						location.href = notification.data.home.url;
-						break;
-				}
-			});
-		}
+					},
+					actions: [{
+						title: 'Share',
+						action: 'share',
+						icon: '/img/adwaita-icons/places/folder-publicshare.svg',
+					}, {
+						title: 'Dismiss',
+						action: 'close',
+						icon: '/img/octicons/x.svg',
+					}]
+				}).addEventListener('notificationclick', ({ action, notification }) => {
+					switch (action) {
+						case 'close':
+							notification.close();
+							break;
 
+						case 'share':
+							if (navigator.canShare({ title: document.title, url: location.href })) {
+								const { title, text, url } = notification.data.share;
+								navigator.share({ title, url, text });
+							}
+							break;
+						case 'home':
+							location.href = notification.data.home.url;
+							break;
+					}
+				});
+			}
+		});
 
 		Promise.all([
 			customElements.whenDefined('leaflet-map'),
@@ -144,7 +126,6 @@ Promise.allSettled([
 
 						stateHandler(history);
 					}
-
 				}
 			} else if (history.state !== null) {
 				stateHandler(history);
