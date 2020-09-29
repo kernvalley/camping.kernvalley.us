@@ -60,6 +60,12 @@
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
+- href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  as: style
+  type: text/css
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer
+  integrity: sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==
 - href: "https://cdn.kernvalley.us/components/notification/html-notification.html"
   as: fetch
   type: text/html
