@@ -1,0 +1,24 @@
+source: krv-camping
+medium: web
+campaign: kv-ad
+sidebar:
+  - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
+    label: Kern Valley Ads
+    url: https://ads.kernvalley.us/
+    image: https://ads.kernvalley.us/img/favicon.svg
+    description: Advertise on websites throughout the Kern River Valley
+    callToAction: Click here to get started!
+    layout: card
+    campaign: kv-ads
+    theme: auto
+  - uuid: 572ec662-0b35-4ffa-9934-0e993b0241ee
+    label: Camping on the Kern
+    description: "Whether you're visiting for a family camping or rafting trip we want to take the hassle out of your vacation!"
+    image: "https://static.wixstatic.com/media/d474c7_75251426e5d54ad9927e4e030ac8b07c~mv2.png/v1/fill/w_245,h_134,al_c,q_85,usm_0.66_1.00_0.01/CAMPING%2520(2)_edited.webp"
+    callToAction: Book your Trailer Now!
+    layout: stack
+    theme: auto
+    url: https://www.campingonthekern.com
+    campaign: kv-ads
+    imageFit: contain
+    imagePosition: center

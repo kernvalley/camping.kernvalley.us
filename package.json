@@ -1,6 +1,6 @@
 {
   "name": "kern-valley-camping",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "Map of camping sites in and around the Kern River Valley",
   "config": {
