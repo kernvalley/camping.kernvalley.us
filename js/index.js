@@ -48,15 +48,7 @@ Promise.allSettled([
 			window.addEventListener('popstate', stateHandler);
 
 			if (! await cookieStore.get({ name: 'notified' })) {
-				cookieStore.set({
-					name: 'notified',
-					value: 'yes',
-					path: '/',
-					domain: location.hostname,
-					sameSite: 'strict',
-				});
-
-				new HTMLNotificationElement('Under Construction', {
+				const notification = new HTMLNotificationElement('Under Construction', {
 					icon: '/img/favicon.svg',
 					body: 'Kern Valley Camping is still under construction',
 					image: 'https://i.imgur.com/6xZrS3mm.jpg',
@@ -84,7 +76,9 @@ Promise.allSettled([
 						action: 'close',
 						icon: '/img/octicons/x.svg',
 					}]
-				}).addEventListener('notificationclick', ({ action, notification }) => {
+				});
+
+				notification.addEventListener('notificationclick', ({ action, notification }) => {
 					switch (action) {
 						case 'close':
 							notification.close();
@@ -100,6 +94,17 @@ Promise.allSettled([
 							location.href = notification.data.home.url;
 							break;
 					}
+				});
+
+				notification.addEventListener('close', () => {
+					cookieStore.set({
+						name: 'notified',
+						value: 'yes',
+						path: '/',
+						sameSite: 'strict',
+						secure: true,
+						expires: new Date('2021-01-01'),
+					});
 				});
 			}
 		});
