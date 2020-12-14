@@ -3,3 +3,13 @@
 	font-size: 1.2em;
 	justify-content: space-around;
 }
+
+#app-menu, #install-btn {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+}
+
+#install-btn > svg {
+	margin-bottom: 10px;
+}

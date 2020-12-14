@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.6] - 2020-12-13
+
+### Added
+- Add `<button is="app-list">`
+- Control theme via `cookieStore`
+
+### Changed
+- Move `<button is="pwa-install">` to `<nav>`
+
 ### Changed
 - Update to Leaflet [1.7.1](https://leafletjs.com/2020/09/04/leaflet-1.7.1.html)
 
