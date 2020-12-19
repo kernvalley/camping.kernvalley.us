@@ -1,5 +1,6 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
+import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://unpkg.com/@webcomponents/custom-elements@1.4.1/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
@@ -26,46 +27,20 @@ $(document.documentElement).toggleClass({
 	'no-js': false,
 });
 
-cookieStore.get({ name: 'theme' }).then(async cookie => {
-	await $.ready;
-	const $ads = $('ad-block:not([theme]), ad-block[data-theme="auto"]');
-
-	const setTheme = async ({ name, value = 'auto' }) => {
-		if (name === 'theme') {
-			await Promise.all([
-				$(':root, [data-theme]').data({ theme: value }),
-				$('[theme]:not(ad-block)').attr({ theme: value }),
-				$ads.attr({ theme: value }),
-			]);
-		}
-	};
-
-	if (cookie && typeof cookie.value === 'string') {
-		setTheme(cookie);
-	}
-
-	cookieStore.addEventListener('change', ({ changed, deleted }) => {
-		const cookie = [...changed, ...deleted].find(({ name }) => name === 'theme');
-
-		if (cookie) {
-			setTheme(cookie);
-		}
-	});
-});
-
 if (typeof GA === 'string' && GA.length !== 0) {
 	requestIdleCallback(() => {
-		importGa(GA).then(async () => {
-			/* global ga */
-			ga('create', ga, 'auto');
-			ga('set', 'transport', 'beacon');
-			ga('send', 'pageview');
+		importGa(GA).then(async ({ ga }) => {
+			if (ga instanceof Function) {
+				ga('create', ga, 'auto');
+				ga('set', 'transport', 'beacon');
+				ga('send', 'pageview');
 
-			await ready();
+				await ready();
 
-			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+			}
 		});
 	});
 }
