@@ -11,7 +11,7 @@
 	{% endfor %}
 	{% if site.service_worker %}
 		<div class="flex row center">
-			<button is="pwa-install" id="install-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="">
+			<button is="pwa-install" id="install-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
 				{% include icon.html icon="system-software-install" fill="currentColor" height="22" width="22" %}
 				<span>Install</span>
 			</button>

@@ -1,6 +1,3 @@
-- label: Home
-  icon: home
-  href: "/"
 - label: Events
   icon: calendar
   href: "https://events.kernvalley.us"

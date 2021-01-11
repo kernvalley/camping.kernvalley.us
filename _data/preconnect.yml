@@ -1,8 +1,8 @@
-- href: https://i.imgur.com/
-  crossOrigin: anonymous
-  referrerPolicy: origin
 - href: https://api.github.com
   crossOrigin: anonymous
-- href: "https://maps.wikimedia.org"
+- href: https://maps.wikimedia.org
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+- href: https://api.openweathermap.org
   referrerPolicy: no-referrer
   crossOrigin: anonymous

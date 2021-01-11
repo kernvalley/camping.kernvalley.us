@@ -1,4 +1,5 @@
 <aside id="sidebar" class="card shadow">
+	{% if site.data.keys.openWeatherMap %}{% include weather.html appId=site.data.keys.openWeatherMap postalCode=include.postalCode %}{% endif %}
 	{% if include.pinned-posts %}{% include pinned-posts.html count=layout.pinned-posts %}{% endif %}
 	{% for ad in site.data.ads.sidebar %}
 		{% include ad.html

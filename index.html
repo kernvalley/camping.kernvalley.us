@@ -30,20 +30,38 @@ tags:
 			<span class="mobile-hidden">Clear</span>
 		</button>
 	</form>
-	{% for camp in site.data.campsites %}
-		{% include campsite.html
-			identifier=camp.identifier
-			icon=camp.icon
-			name=camp.name
-			closed=camp.closed
-			description=camp.description
-			image=camp.image
-			geo=camp.geo
-			url=camp.url
-			telephone=camp.telephone
-			email=camp.email
-			address=camp.address
-			priceRange=camp.priceRange
-		%}
+	{% for town in site.data.places.towns %}
+		<leaflet-marker slot="markers" id="{{ town.identifier }}" class="custom-element if-defined" title="{{ town.name | escape }}" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" maxZoom="15" itemtype="https://schema.org/City" itemscope="">
+			<meta itemprop="name" content="{{ town.name | escape }}" />
+			<h3 slot="popup">{{ town.name }},{{ town.address.addressRegion | default: 'CA' }}</h3>
+			<img src="https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg" slot="icon" height="28" width="28" decoding="async" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
+		</leaflet-marker>
+	{% endfor %}
+	{% for business in site.data.places.campgrounds %}
+		{% include local-business-marker.html business=business %}
+	{% endfor %}
+	{% for business in site.data.places.gas %}
+		{% include local-business-marker.html business=business minZoom=14 %}
+	{% endfor %}
+	{% for business in site.data.places.stores %}
+		{% include local-business-marker.html business=business minZoom=15 %}
+	{% endfor %}
+	{% for business in site.data.places.civic %}
+		{% include local-business-marker.html business=business minZoom=17 %}
+	{% endfor %}
+	{% for business in site.data.places.lodging %}
+		{% include local-business-marker.html business=business minZoom=17 %}
+	{% endfor %}
+	{% for business in site.data.places.businesses %}
+		{% include local-business-marker.html business=business minZoom=17 %}
+	{% endfor %}
+	{% for business in site.data.places.restaurants %}
+		{% include restaurant-marker.html business=business minZoom=16 %}
+	{% endfor %}
+	{% for business in site.data.places.bars %}
+		{% include restaurant-marker.html business=business minZoom=16 %}
+	{% endfor %}
+	{% for business in site.data.places.cafes %}
+		{% include restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 </leaflet-map>
