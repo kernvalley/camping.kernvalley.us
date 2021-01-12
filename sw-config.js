@@ -36,6 +36,7 @@ const config = {
 		'/img/icon-32.png',
 		'/img/favicon.svg',
 		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg',
+		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 
 		/* Fonts */
