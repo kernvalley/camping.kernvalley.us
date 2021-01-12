@@ -14,15 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New and updated components in `_includes/` for map markers
 - Weather from OpenWeatherMap via `<weather-current>`
 - Also show markers for towns, gas stations, stores, etc.
+- Add fullscreen button
 
 ### Changed
 - Use data from places instead of local copy of data
 - Replace contact page with redirect to `https://contact.kernvalley.us`
+- Update nav layout
 
 ### Removed
 - Remove unused icons from `icons.svg`
 - Clean-up SW cache list
 - `<html-notification>` notifying of site being under construction
+
+### Fixed
+- Footer layout in Chrome (do not use multi-column layout)
+- Fix incorrect viewport / nav placement on mobile
 
 ## [v1.0.6] - 2020-12-13
 

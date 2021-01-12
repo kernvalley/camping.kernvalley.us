@@ -1,21 +1,55 @@
 #sidebar {
 	grid-area: sidebar;
-	--ad-block-width: 30vw;
+}
+
+weather-current:defined {
+	margin: 0 0 0.6em 0;
+}
+
+.ad-block {
+	margin: 0 0 0.6em 0;
+}
+
+@media (max-width: 800px) {
+	#sidebar {
+		width: 95%;
+		transform: translatex(2.5%);
+	}
+
+	#sidebar > *:first-of-type {
+		margin-top: 0.6em;
+	}
+}
+
+#sidebar {
+	--ad-block-width: 380px;
 	--ad-block-stack-width: var(--ad-block-width);
 	--ad-block-text-width: var(--ad-block-width);
 	--ad-block-image-width: var(--ad-block-width);
 }
 
-@media (max-width: 800px) {
+#sidebar > weather-current {
+	width: 380px;
+	max-width: 100%;
+}
+
+@media (min-width: 981px) {
 	#sidebar {
-		--ad-block-width: 95vw;
+		height: var(--map-height);
+		overflow-y: auto;
 	}
 }
 
-#sidebar .sidebar-section {
-	margin-bottom: 0.6em;
-}
+@media (max-width: 980px) {
+	#sidebar {
+		max-height: auto;
+		overflow-y: visible;
+	}
 
-details.accordion[open] > :not(summary) {
-	animation: slideInDown 200ms ease-in;
+	#sidebar .ad-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 12px;
+	}
 }

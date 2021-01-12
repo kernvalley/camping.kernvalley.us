@@ -1,15 +1,21 @@
 #nav {
-	padding: 0.6em;
 	font-size: 1.2em;
-	justify-content: space-around;
+	max-width: 100vw;
+	gap: 12px;
 }
 
-#app-menu, #install-btn {
+#nav > .btn {
 	background-color: transparent;
 	color: inherit;
 	border: none;
+	height: 100%;
+}
+
+#install-btn, #fs-button {
+	justify-self: flex-end;
 }
 
 #install-btn > svg {
 	margin-bottom: 10px;
 }
+

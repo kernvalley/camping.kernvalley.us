@@ -22,6 +22,9 @@ $(document.documentElement).toggleClass({
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
 	'no-js': false,
+}).then($doc => {
+	$doc.css({ '--viewport-height': `${window.innerHeight}px` });
+	$doc.debounce('resize', () => $doc.css({ '--viewport-height': `${window.innherHeight}px` }));
 });
 
 if (typeof GA === 'string' && GA.length !== 0) {
