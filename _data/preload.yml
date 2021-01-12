@@ -28,12 +28,6 @@
   referrrPolicy: no-referrer
   importance: high
   media: "(max-width: 400px)"
-- href: "https://cdn.polyfill.io/v3/polyfill.min.js"
-  as: script
-  type: text/javascript
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-  importance: high
 - href: "https://cdn.kernvalley.us/fonts/roboto.woff2"
   as: font
   type: font/woff2
@@ -56,17 +50,22 @@
   crossOrigin: anonymous
   referrerPolicy: no-referrer
   integrity: sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==
-- href: "https://cdn.kernvalley.us/components/notification/html-notification.html"
-  as: fetch
-  type: text/html
+- href: https://cdn.kernvalley.us/img/markers.svg
+  as: image
+  type: image/svg+xml
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-- href: "https://cdn.kernvalley.us/components/notification/html-notification.css"
+- href: https://cdn.kernvalley.us/components/ad/block.css
   as: style
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-- href: https://cdn.kernvalley.us/components/ad/block.css
+- href: https://cdn.kernvalley.us/components/toast-message.css
+  as: style
+  type: text/css
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer
+- href: https://cdn.kernvalley.us/components/weather/current.css
   as: style
   type: text/css
   crossOrigin: anonymous

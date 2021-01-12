@@ -1,5 +1,5 @@
 export function getMarkers() {
-	return Array.from(document.querySelectorAll('leaflet-marker'));
+	return Array.from(document.querySelectorAll('leaflet-marker[itemtype="https://schema.org/Campground"], leaflet-marker[itemtype="https://schema.org/City"]'));
 }
 
 export function getMarkerTitles() {

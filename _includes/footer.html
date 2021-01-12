@@ -1,58 +1,64 @@
 <footer id="footer">
-	<div class="social-links cols-2">
+	<div class="social-link flex row wrap space-evenly">
 		{% if site.repository %}
-			<div class="cols inline-block">
-				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
-					{% include icon.html icon="mark-github" class="current-color icon social-icon" %}
+			<div class="grow-1">
+				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="noopener noreferrer external">
+					{% include icon.html icon="mark-github" class="social-icon" fill="currentColor" height="25" width="25" %}
 					<span>GitHub Profile</span>
 				</a>
-				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="external noopener">
-					{% include icon.html icon="repo" class="current-color icon social-icon" %}
+				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="noopener noreferrer external">
+					{% include icon.html icon="repo" class="social-icon" fill="currentColor" height="25" width="25" %}
 					<span>GitHub Repo</span>
 				</a>
-				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}/issues" target="_blank" rel="external noopener">
-					{% include icon.html icon="issue-opened" class="current-color icon social-icon" %}
+				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}/issues" target="_blank" rel="noopener noreferrer external">
+					{% include icon.html icon="issue-opened" class="social-icon" fill="currentColor" height="25" width="25" %}
 					<span>Report a Problem</span>
 				</a>
 			</div>
 		{% endif %}
-		<div class="cols inline-block">
-			<a class="block" href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="web-browser" class="current-color icon social-icon" %}
+		<div class="grow-1">
+			<a class="block" href="https://kernvalley.us" target="_blank" rel="noopener noreferrer external" itemprop="sameAs">
+				{% include icon.html icon="web-browser" class="social-icon" fill="currentColor" height="25" width="25" %}
 				<span>KernValley.US</span>
 			</a>
-			<a class="block" href="/contact/">
-				{% include icon.html icon="address-book" class="current-color icon social-icon" %}
+			<a class="block" href="/contact" rel="noopener noreferrer external">
+				{% include icon.html icon="address-book" class="social-icon" fill="currentColor" height="25" width="25" %}
 				<span>Contact</span>
 			</a>
 			<a class="block" href="/privacy/">
-				{% include icon.html icon="eye" class="current-color icon social-icon" %}
-				<span>Privacy Policy</span>
+				{% include icon.html icon="eye" class="social-icon" fill="currentColor" height="25" width="25" %}
+				<span>Privacy</span>
 			</a>
-			<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="twitter" class="icon social-icon" %}
-				<span>On Twitter</span>
+		</div>
+		<div class="grow-1">
+			<a class="block" href="https://www.facebook.com/KernValley.us/" target="_blank" rel="noopener noreferrer external" itemprop="sameAs">
+				{% include icon.html icon="facebook" class="social-icon" fill="currentColor" height="25" width="25" %}
+				<span>Facebook</span>
 			</a>
-			<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="linkedin" class="icon social-icon" %}
+			<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="noopener noreferrer external" itemprop="sameAs">
+				{% include icon.html icon="twitter" class="social-icon" fill="currentColor" height="25" width="25" %}
+				<span>Twitter</span>
+			</a>
+			<a class="block" href="https://www.linkedin.com/company/18644791/" target="_blank" rel="noopener noreferrer external" itemprop="sameAs">
+				{% include icon.html icon="linkedin" class="social-icon" fill="currentColor" height="25" width="25" %}
 				<span>LinkedIn</span>
 			</a>
 		</div>
 	</div>
 	<hr />
 	<div class="copyright">
-		<github-user user="{{ site.repository.username }}">
+		<github-user user="{{ site.repository.username }}" loading="lazy">
 			<h3 slot="header" class="center">Created By</h3>
 			<div slot="footer">
 				<span>&copy;</span>
 				<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
-				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-					<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
-						<span itemprop="name">KernValley.US</span>
+				<span itemprop="copyrightHolder" itemtype="https://schema.org/Person" itemscope="" hidden="">
+					<a href="https://shgysk8zer0.github.io" target="_blank" rel="noopener noreferrer external" itemprop="url">
+						<span itemprop="givenName">Chris</span>
+						<span itemprop="familyName">Zuber</span>
 					</a>
 				</span>
 			</div>
 		</github-user>
-		{% include keep-kern-clean.html %}
 	</div>
 </footer>
