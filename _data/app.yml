@@ -37,10 +37,13 @@ screenshots:
   - src: 'https://i.imgur.com/6xZrS3ml.jpg'
     sizes: 640x313
     type: image/jpeg
+iarc_rating_id: eafacfbe-483c-40f7-81c2-4e1e74bec3e5
 related_applications:
   - platform: play
     url: "https://play.google.com/store/apps/details?id=com.krv_camping.twa"
     id: com.krv_camping.twa
+  - platform: webapp
+    url: https://camping.kernvalley.us/manifest.json
 features:
   - Map of campgrounds in the Kern River Valley
   - Offline availability
