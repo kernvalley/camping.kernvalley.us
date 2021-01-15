@@ -8,6 +8,7 @@ const config = {
 	fresh: [
 		'/',
 		'https://apps.kernvalley.us/apps.json',
+		'/manifest.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		'/css/index.min.css',
@@ -38,6 +39,7 @@ const config = {
 		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg',
 		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
+		'https://cdn.kernvalley.us/img/logos/instagram.svg',
 
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',

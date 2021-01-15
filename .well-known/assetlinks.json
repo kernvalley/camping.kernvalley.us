@@ -9,4 +9,10 @@
       "24:07:63:C0:A6:F9:41:06:D2:B9:9B:EC:87:1D:07:6A:99:8E:56:45:86:5F:F0:FC:EF:19:2E:65:68:0A:32:FA"
     ]
   }
+}, {
+  "relation": ["delegate_permission/common.query_webapk"],
+  "target": {
+    "namespace": "web",
+    "site": "https://camping.kernvalley.us/manifest.json"
+  }
 }]
