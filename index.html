@@ -64,4 +64,10 @@ tags:
 	{% for business in site.data.places.cafes %}
 		{% include restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
+	{% for business in site.data.places.landmarks %}
+		{% include restaurant-marker.html business=business minZoom=12 %}
+	{% endfor %}
+	{% for business in site.data.places.activities %}
+		{% include restaurant-marker.html business=business minZoom=14 %}
+	{% endfor %}
 </leaflet-map>
