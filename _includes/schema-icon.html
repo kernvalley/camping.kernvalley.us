@@ -55,6 +55,10 @@
 			{% include map-icon.html icon='parking' %}
 		{% when 'PublicToilet' %}
 			{% include map-icon.html icon='outhouse' %}
+		{% when 'Park' %}
+			{% include map-icon.html icon='tree' %}
+		{% when 'City' or 'AdministrativeArea' %}
+			{% include map-icon.html icon='city' %}
 		{% when 'RadioStation' %}
 			{% include map-icon.html icon='radio-tower' %}
 		{% when 'EventVenue' %}

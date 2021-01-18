@@ -38,7 +38,7 @@ tags:
 		</leaflet-marker>
 	{% endfor %}
 	{% for business in site.data.places.campgrounds %}
-		{% include local-business-marker.html business=business %}
+		{% include local-business-marker.html business=business ld=true %}
 	{% endfor %}
 	{% for business in site.data.places.gas %}
 		{% include local-business-marker.html business=business minZoom=14 %}
