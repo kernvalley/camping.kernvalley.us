@@ -1,3 +1,27 @@
 #header {
-	background-image: url("/img/raster/hiking.jpg");
+	background-image: url("/img/raster/hiking-400.jpg");
+}
+
+@media (min-width: 640px) or (min-height: 480px) {
+	#header {
+		background-image: url("/img/raster/hiking-640.jpg");
+	}
+}
+
+@media (min-width: 800px) or (min-height: 600px) {
+	#header {
+		background-image: url("/img/raster/hiking-800.jpg");
+	}
+}
+
+@media (min-width: 1280px) or (min-height: 960px) {
+	#header {
+		background-image: url("/img/raster/hiking-1280.jpg");
+	}
+}
+
+@media (min-width: 1440px) or (min-height: 1080px) {
+	#header {
+		background-image: url("/img/raster/hiking.jpg");
+	}
 }
