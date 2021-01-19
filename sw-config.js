@@ -47,6 +47,9 @@ const config = {
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
 		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
+		/https:\/\/[A-z]\.tile\.openstreetmap\.org\/*/,
+		/https:\/\/server\.arcgisonline\.com\/arcgis\/rest\/services\/*/,
+		/https:\/\/basemap\.nationalmap\.gov\/arcgis\/rest\/services\/USGSImageryOnly\/MapServer\/tile\/*/,
 		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
 		/https:\/\/i\.imgur\.com\/*/,
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
