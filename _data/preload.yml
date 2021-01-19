@@ -1,50 +1,50 @@
-- href: "/img/raster/hiking.jpg"
+- href: /img/raster/hiking-400.jpg
   as: image
   type: image/jpeg
   referrrPolicy: no-referrer
   importance: high
-  media: "(min-width: 1281px)"
-- href: "/img/raster/hiking-1280.jpg"
+  media: "(orientation: landscape) and (max-width: 639px), (orientation: portrait) and (max-height: 479px)"
+- href: /img/raster/hiking-640.jpg
   as: image
   type: image/jpeg
   referrrPolicy: no-referrer
   importance: high
-  media: "((min-width: 801px) and (max-width: 1280px))"
-- href: "/img/raster/hiking-800.jpg"
+  media: "(orientation: landscape) and (min-width: 640px) and (max-width: 799px), (orientation: portrait) and (min-height: 480px) and (max-height: 599px)"
+- href: /img/raster/hiking-800.jpg
   as: image
   type: image/jpeg
   referrrPolicy: no-referrer
   importance: high
-  media: "((min-width: 641px) and (max-width: 800px))"
-- href: "/img/raster/hiking-640.jpg"
+  media: "(orientation: landscape) and (min-width: 800px) and (max-width: 1279px), (orientation: portrait) and (min-height: 600px) and (max-height: 959px)"
+- href: /img/raster/hiking-1280.jpg
   as: image
   type: image/jpeg
   referrrPolicy: no-referrer
   importance: high
-  media: "((min-width: 401px) and (max-width: 640px))"
-- href: "/img/raster/hiking-400.jpg"
+  media: "(orientation: landscape) and (min-width: 1280px) and (max-width: 1439px), (orientation: portrait) and (min-height: 960px) and (max-height: 1079px)"
+- href: /img/raster/hiking.jpg
   as: image
   type: image/jpeg
   referrrPolicy: no-referrer
   importance: high
-  media: "(max-width: 400px)"
-- href: "https://cdn.kernvalley.us/fonts/roboto.woff2"
+  media: "(min-width: 1440px), (min-height: 1080px)"
+- href: https://cdn.kernvalley.us/fonts/roboto.woff2
   as: font
   type: font/woff2
   crossOrigin: anonymous
   referrerPolicy: no-referrer
   importance: high
-- href: "https://cdn.kernvalley.us/components/github/user.css"
+- href: https://cdn.kernvalley.us/components/github/user.css
   as: style
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-- href: "https://cdn.kernvalley.us/components/leaflet/map.css"
+- href: https://cdn.kernvalley.us/components/leaflet/map.css
   as: style
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-- href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+- href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
   as: style
   type: text/css
   crossOrigin: anonymous
