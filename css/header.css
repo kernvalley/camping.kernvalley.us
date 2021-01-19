@@ -1,26 +1,28 @@
-#header {
-	background-image: url("/img/raster/hiking-400.jpg");
+@media ((max-width: 639px) and (max-height: 479px)) {
+	#header {
+		background-image: url("/img/raster/hiking-400.jpg");
+	}
 }
 
-@media (min-width: 640px) or (min-height: 480px) {
+@media ((min-width: 640px) or (min-height: 480px)) and ((max-width: 799px) and (max-height: 599px)) {
 	#header {
 		background-image: url("/img/raster/hiking-640.jpg");
 	}
 }
 
-@media (min-width: 800px) or (min-height: 600px) {
+@media ((min-width: 800px) or (min-height: 600px)) and ((max-width: 1279px) and (max-height: 959px)) {
 	#header {
 		background-image: url("/img/raster/hiking-800.jpg");
 	}
 }
 
-@media (min-width: 1280px) or (min-height: 960px) {
+@media ((min-width: 1280px) or (min-height: 960px)) and ((max-width: 1439px) and (max-height: 1079px)) {
 	#header {
 		background-image: url("/img/raster/hiking-1280.jpg");
 	}
 }
 
-@media (min-width: 1440px) or (min-height: 1080px) {
+@media ((min-width: 1440px) or (min-height: 1080px)) {
 	#header {
 		background-image: url("/img/raster/hiking.jpg");
 	}
