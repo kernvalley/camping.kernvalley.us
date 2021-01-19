@@ -17,7 +17,7 @@ tags:
 - lake isabella
 - isabella lake
 ---
-<leaflet-map class="custom-element" center="35.68490811606957,-118.42180275481842" zoom="11" maxzoom="19" tilesrc="https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}" toolbar="" zoomcontrol="" detectretina="" aria-hidden="true">
+<leaflet-map class="custom-element" center="35.68490811606957,-118.42180275481842" zoom="11" maxzoom="16" tilesrc="https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}" toolbar="" zoomcontrol="" detectretina="" aria-hidden="true">
 	<span slot="attribution">Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC</span>
 	<form name="search" class="if-defined" slot="toolbar">
 		<input type="search" class="input inline-block" name="query" placeholder="Search by name" list="campgrounds-list" autocomplete="off" required="" />
@@ -35,17 +35,17 @@ tags:
 		<leaflet-marker slot="markers" id="{{ town.identifier }}" class="custom-element if-defined" title="{{ town.name | escape }}" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" maxZoom="15" itemtype="https://schema.org/City" itemscope="">
 			<meta itemprop="name" content="{{ town.name | escape }}" />
 			<h3 slot="popup">{{ town.name }},{{ town.address.addressRegion | default: 'CA' }}</h3>
-			<img src="https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg" slot="icon" height="28" width="28" decoding="async" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
+			<img src="https://cdn.kernvalley.us/img/markers.svg#city" slot="icon" height="28" width="28" decoding="async" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
 		</leaflet-marker>
 	{% endfor %}
 	{% for business in site.data.places.campgrounds %}
 		{% include local-business-marker.html business=business ld=true %}
 	{% endfor %}
 	{% for business in site.data.places.gas %}
-		{% include local-business-marker.html business=business minZoom=14 %}
+		{% include local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.stores %}
-		{% include local-business-marker.html business=business minZoom=15 %}
+		{% include local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.civic %}
 		{% include local-business-marker.html business=business minZoom=17 %}
@@ -54,7 +54,7 @@ tags:
 		{% include local-business-marker.html business=business minZoom=17 %}
 	{% endfor %}
 	{% for business in site.data.places.businesses %}
-		{% include local-business-marker.html business=business minZoom=17 %}
+		{% include local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.restaurants %}
 		{% include restaurant-marker.html business=business minZoom=16 %}
@@ -66,9 +66,9 @@ tags:
 		{% include restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.landmarks %}
-		{% include restaurant-marker.html business=business minZoom=12 %}
+		{% include restaurant-marker.html business=business maxzoom="11" %}
 	{% endfor %}
 	{% for business in site.data.places.activities %}
-		{% include restaurant-marker.html business=business minZoom=14 %}
+		{% include restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 </leaflet-map>
