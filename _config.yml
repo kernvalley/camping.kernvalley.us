@@ -20,14 +20,15 @@ description: "A template repository for Jekyll sites, including skeleton JS, CSS
 mobile-web-app-capable: true
 canonical: 'https://camping.kernvalely.us'
 keywords:
-- kern valley
-- kern river valley
-- map
-- camping
-- campground
-- kern river
-- lake isabella
-- isabella lake
+  - kern valley
+  - kern river valley
+  - map
+  - camping
+  - campground
+  - kern river
+  - lake isabella
+  - isabella lake
+keep-kern-clean: true
 repository:
   username: kernvalley
   project: camping.kernvalley.us
@@ -85,41 +86,41 @@ defaults:
     comments: false
     ads: false
 plugins:
-- jekyll-gist
-- jekyll-youtube
-- jekyll-admin
-- jekyll-watch
-- jekyll-paginate
+  - jekyll-gist
+  - jekyll-youtube
+  - jekyll-admin
+  - jekyll-watch
+  - jekyll-paginate
 include:
 # Folders with dotfiles are ignored by default.
-- .well-known
-- _headers
-- _redirects
+  - .well-known
+  - _headers
+  - _redirects
 exclude:
-- ".gitkeep"
-- "*.rb"
-- "*.gemspec"
-- "*.php"
-- "*.sh"
-- "*.csv"
-- "*.sfd"
-- "*.ai"
-- "*.psd"
-- "*.sketch"
-- "*.yml"
-- "*.lock"
-- "*.log"
-- "*.config.js"
-- ".gitkeep"
-- docs/
-- "/.github/"
-- Gemfile
-- node_modules/
-- palette.xml
-- README.md
-- LICENSE
-- "/img/octicons/*.md"
-- "/img/octicons/LICENSE"
-- "/img/octicons/script"
-- "/img/adwaita-icons/docs"
-- "/img/adwaita-icons/LICENSE"
+  - ".gitkeep"
+  - "*.rb"
+  - "*.gemspec"
+  - "*.php"
+  - "*.sh"
+  - "*.csv"
+  - "*.sfd"
+  - "*.ai"
+  - "*.psd"
+  - "*.sketch"
+  - "*.yml"
+  - "*.lock"
+  - "*.log"
+  - "*.config.js"
+  - ".gitkeep"
+  - docs/
+  - "/.github/"
+  - Gemfile
+  - node_modules/
+  - palette.xml
+  - README.md
+  - LICENSE
+  - "/img/octicons/*.md"
+  - "/img/octicons/LICENSE"
+  - "/img/octicons/script"
+  - "/img/adwaita-icons/docs"
+  - "/img/adwaita-icons/LICENSE"

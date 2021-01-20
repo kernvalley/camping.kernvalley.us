@@ -23,11 +23,11 @@ tags:
 		<input type="search" class="input inline-block" name="query" placeholder="Search by name" list="campgrounds-list" autocomplete="off" required="" />
 		<datalist id="campgrounds-list"></datalist>
 		<button type="submit" class="btn btn-accept" title="Search" hidden="">
-				{% include icon.html icon="search" %}
+				{% include common/icon.html icon="search" %}
 				<span class="mobile-hidden">Search</span>
 		</button>
 		<button type="reset" class="btn btn-reject" title="Clear" hidden="">
-			{% include icon.html icon="x" %}
+			{% include common/icon.html icon="x" %}
 			<span class="mobile-hidden">Clear</span>
 		</button>
 	</form>
@@ -39,36 +39,36 @@ tags:
 		</leaflet-marker>
 	{% endfor %}
 	{% for business in site.data.places.campgrounds %}
-		{% include local-business-marker.html business=business ld=true %}
+		{% include leaflet/local-business-marker.html business=business ld=true %}
 	{% endfor %}
 	{% for business in site.data.places.gas %}
-		{% include local-business-marker.html business=business minZoom=16 %}
+		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.stores %}
-		{% include local-business-marker.html business=business minZoom=16 %}
+		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.civic %}
-		{% include local-business-marker.html business=business minZoom=17 %}
+		{% include leaflet/local-business-marker.html business=business minZoom=17 %}
 	{% endfor %}
 	{% for business in site.data.places.lodging %}
-		{% include local-business-marker.html business=business minZoom=17 %}
+		{% include leaflet/local-business-marker.html business=business minZoom=17 %}
 	{% endfor %}
 	{% for business in site.data.places.businesses %}
-		{% include local-business-marker.html business=business minZoom=16 %}
+		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.restaurants %}
-		{% include restaurant-marker.html business=business minZoom=16 %}
+		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.bars %}
-		{% include restaurant-marker.html business=business minZoom=16 %}
+		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.cafes %}
-		{% include restaurant-marker.html business=business minZoom=16 %}
+		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 	{% for business in site.data.places.landmarks %}
-		{% include restaurant-marker.html business=business maxzoom="11" %}
+		{% include leaflet/restaurant-marker.html business=business maxzoom="11" %}
 	{% endfor %}
 	{% for business in site.data.places.activities %}
-		{% include restaurant-marker.html business=business minZoom=16 %}
+		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
 	{% endfor %}
 </leaflet-map>
