@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Button for fullscreen
 - Button to show user's current location
 
+### Changed
+- Re-write to use components in `_includes/common/` and `_includes/leaflet/` via submodules
+- Use main site privacy page and add redirect
+
 ### Removed
 - Git copy of `icons.svg` (rely on `svg-sprite-generator` on build)
 
