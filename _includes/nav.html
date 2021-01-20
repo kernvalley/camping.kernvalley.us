@@ -9,6 +9,12 @@
 		</a>
 	{% endunless %}{% endfor %}
 	<span class="grow-4"></span>
+	<button type="button" class="btn nav-btn" id="find-btn" title="Enter Fullscreen">
+		{% include icon.html icon="find-location" fill="currentColor" height="22" width="22" %}
+	</button>
+	<button type="button" class="btn nav-btn" data-full-screen="#leaflet-map" title="Enter Fullscreen">
+		{% include icon.html icon="screen-full" fill="currentColor" height="22" width="22" %}
+	</button>
 	{% if site.service_worker %}
 		<button type="button" is="pwa-install" id="install-btn" class="btn nav-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
 			{% include icon.html height="22" width="22" fill="currentColor" icon="system-software-install" %}

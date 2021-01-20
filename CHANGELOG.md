@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Button for fullscreen
+- Button to show user's current location
+
+### Removed
+- Git copy of `icons.svg` (rely on `svg-sprite-generator` on build)
+
 ## [v1.1.1] - 2021-01-17
 
 ### Changed
