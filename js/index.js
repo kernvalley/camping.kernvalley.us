@@ -11,12 +11,15 @@ import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, getCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { registerMapSearch } from './functions.js';
 import { hashChange, stateHandler } from './handlers.js';
 import { site, GA } from './consts.js';
+
+const locIcon = 'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg';
 
 $(document.documentElement).toggleClass({
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
@@ -58,10 +61,47 @@ Promise.allSettled([
 		});
 
 		Promise.all([
+			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
-			customElements.whenDefined('leaflet-marker'),
-		]).then(async () => {
+		]).then(async ([Marker]) => {
 			hashChange();
+
+			$('#find-btn').click(async () => {
+				const { coords: { latitude, longitude }} = await getLocation({
+					enableHighAccuracy: true,
+					maxAge: 15 * SECONDS,
+				});
+				const ShareButton = await getCustomElement('share-button');
+				const share = new ShareButton();
+				const map = document.getElementById('leaflet-map');
+				const popup = document.createElement('div');
+				const h3 = document.createElement('h3');
+				const pos = document.createElement('div');
+				const url = new URL(document.baseURI);
+				url.hash = `#${latitude},${longitude}`;
+				h3.textContent = 'Current Location';
+				pos.textContent = `${latitude}, ${longitude}`;
+				share.textContent = 'Share Location';
+				share.url = url.href;
+				share.text = 'See my current location';
+
+				popup.append(h3, pos, share);
+
+				const marker = new Marker({ latitude, longitude, icon: locIcon, popup });
+				marker.addEventListener('close', ({ target }) => target.remove());
+				document.title = `Current Location: ${site.title}`;
+				marker.open = true;
+				map.append(marker);
+				map.center = { latitude, longitude };
+				map.zoom = 16;
+				history.pushState({
+					latitude,
+					longitude,
+					title: 'Marked Location',
+					body: `Location: ${latitude}, ${longitude}`,
+				}, document.title, url.href);
+
+			});
 			if (history.state === null && location.hash !== '') {
 				if (location.hash.includes(',')) {
 					const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',', 2).map(parseFloat);

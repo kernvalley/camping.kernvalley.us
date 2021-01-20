@@ -8,13 +8,13 @@ const config = {
 	fresh: [
 		'/',
 		'https://apps.kernvalley.us/apps.json',
+		'https://cdn.kernvalley.us/img/markers.svg',
 		'/manifest.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
-		'https://cdn.kernvalley.us/img/markers.svg',
 		/* Other HTML */
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/github/user.html',
