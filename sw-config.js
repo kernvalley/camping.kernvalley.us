@@ -48,10 +48,12 @@ const config = {
 	allowed: [
 		// /https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
 		// /https:\/\/[A-z]\.tile\.openstreetmap\.org\/*/,
-		/https:\/\/server\.arcgisonline\.com\/ArcGIS\/rest\/services\/*/,
-		/https:\/\/i\.imgur\.com\/*/,
+		'https://server.arcgisonline.com/ArcGIS/rest/services/',
+		'https://i.imgur.com/',
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
-		/https:\/\/api\.github\.com\/users\/*/,
-		/https:\/\/api\.openweathermap\.org\/data\/*/,
 	],
+	allowedFresh: [
+		'https://api.openweathermap.org/data/',
+		'https://api.github.com/users/',
+	]
 };
