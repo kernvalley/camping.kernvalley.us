@@ -11,15 +11,12 @@ import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { $, ready, getCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
+import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
-import { registerMapSearch } from './functions.js';
-import { hashChange, stateHandler } from './handlers.js';
 import { site, GA } from './consts.js';
-
-const locIcon = 'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg';
 
 $(document.documentElement).toggleClass({
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
@@ -55,29 +52,30 @@ Promise.allSettled([
 	init().catch(console.error);
 
 	if (location.pathname === '/') {
-		requestIdleCallback(async () => {
-			registerMapSearch();
-			window.addEventListener('popstate', stateHandler);
-		});
-
 		Promise.all([
 			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
-		]).then(async ([Marker]) => {
-			hashChange();
-
+		]).then(([LeafletMarker]) => {
+			$('#find-btn').unhide();
 			$('#find-btn').click(async () => {
-				const { coords: { latitude, longitude }} = await getLocation({
+				const map = document.querySelector('leaflet-map');
+				const ShareButton = await getCustomElement('share-button');
+				const { coords: { latitude, longitude }} = await map.locate({
 					enableHighAccuracy: true,
 					maxAge: 15 * SECONDS,
+					maxZoom: 16,
 				});
-				const ShareButton = await getCustomElement('share-button');
 				const share = new ShareButton();
-				const map = document.getElementById('leaflet-map');
 				const popup = document.createElement('div');
 				const h3 = document.createElement('h3');
 				const pos = document.createElement('div');
 				const url = new URL(document.baseURI);
+				const icon = await loadImage('https://cdn.kernvalley.us/img/markers.svg#map-marker', {
+					height: 30,
+					width: 30,
+					slot: 'icon',
+					loading: 'lazy',
+				});
 				url.hash = `#${latitude},${longitude}`;
 				h3.textContent = 'Current Location';
 				pos.textContent = `${latitude}, ${longitude}`;
@@ -87,65 +85,12 @@ Promise.allSettled([
 
 				popup.append(h3, pos, share);
 
-				const marker = new Marker({ latitude, longitude, icon: locIcon, popup });
+				const marker = new LeafletMarker({ latitude, longitude, icon, popup });
 				marker.addEventListener('close', ({ target }) => target.remove());
 				document.title = `Current Location: ${site.title}`;
 				marker.open = true;
 				map.append(marker);
-				map.center = { latitude, longitude };
-				map.zoom = 16;
-				history.pushState({
-					latitude,
-					longitude,
-					title: 'Marked Location',
-					body: `Location: ${latitude}, ${longitude}`,
-				}, document.title, url.href);
-
 			});
-			if (history.state === null && location.hash !== '') {
-				if (location.hash.includes(',')) {
-					const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',', 2).map(parseFloat);
-					history.replaceState({
-						latitude,
-						longitude,
-						title: 'Location',
-						body: `Coorinates: ${latitude}, ${longitude}`,
-					}, `Location: ${site.title}`, location.href);
-
-					stateHandler(history);
-				} else {
-					const marker = document.getElementById(location.hash.substr(1));
-
-					if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
-						document.title = `${marker.title} | ${site.title}`;
-						history.replaceState({
-							title: marker.title,
-							longitude: marker.longitude,
-							latitude: marker.latitude,
-							uuid: marker.id,
-						}, document.title, location.href);
-
-						stateHandler(history);
-					}
-				}
-			} else if (history.state !== null) {
-				stateHandler(history);
-			}
 		});
 	}
-
-	$('leaflet-marker').on('open', ({target}) => {
-		const url = new URL(location.pathname, location.origin);
-		url.hash = `#${target.id}`;
-		document.title = `${target.title} | ${site.title}`;
-
-		if (location.hash.substr(1) !== target.id) {
-			history.pushState({
-				latitude: target.latitude,
-				longitude: target.longitude,
-				title: target.title,
-				uuid: target.id,
-			}, document.title, url.href);
-		}
-	});
 });
