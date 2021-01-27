@@ -12,9 +12,6 @@ const config = {
 		'/manifest.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		'/css/index.min.css',
-		'/js/index.min.js',
-		'/img/icons.svg',
 		/* Other HTML */
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/github/user.html',
@@ -22,8 +19,11 @@ const config = {
 		'https://cdn.kernvalley.us/components/toast-message.html',
 
 		/* JS, `customElements`, etc. */
+		'/js/index.min.js',
+		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* CSS */
+		'/css/index.min.css',
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.css',
@@ -31,6 +31,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/toast-message.css',
 
 		/* Images & Icons */
+		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-512.png',
 		'/img/icon-192.png',
