@@ -19,37 +19,59 @@
 			<img src="https://cdn.kernvalley.us/img/markers.svg#city" slot="icon" height="28" width="28" decoding="async" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
 		</leaflet-marker>
 	{% endfor %}
-	{% for business in site.data.places.campgrounds %}
-		{% include leaflet/local-business-marker.html business=business ld=true %}
+	{% for place in site.data.places.campgrounds %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place ld=true %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.gas %}
-		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.gas %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.stores %}
-		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.stores %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.civic %}
-		{% include leaflet/local-business-marker.html business=business minZoom=17 %}
+	{% for place in site.data.places.civic %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place minZoom=17 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.lodging %}
-		{% include leaflet/local-business-marker.html business=business minZoom=17 %}
+	{% for place in site.data.places.lodging %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place minZoom=17 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.businesses %}
-		{% include leaflet/local-business-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.businesses %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.restaurants %}
-		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.restaurants %}
+		{% if place.geo %}
+			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.bars %}
-		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.bars %}
+		{% if place.geo %}
+			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.cafes %}
-		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.cafes %}
+		{% if place.geo %}
+			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.landmarks %}
-		{% include leaflet/restaurant-marker.html business=business maxzoom="11" %}
+	{% for place in site.data.places.landmarks %}
+		{% if place.geo %}
+			{% include leaflet/restaurant-marker.html business=place maxzoom="11" %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.activities %}
-		{% include leaflet/restaurant-marker.html business=business minZoom=16 %}
+	{% for place in site.data.places.activities %}
+		{% if place.geo %}
+			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
+		{% endif %}
 	{% endfor %}
 </leaflet-map>
