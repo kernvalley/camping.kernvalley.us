@@ -20,32 +20,32 @@
 		</leaflet-marker>
 	{% endfor %}
 	{% for place in site.data.places.campgrounds %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place ld=true %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.gas %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.stores %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.civic %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place minZoom=17 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.lodging %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place minZoom=17 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.businesses %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
@@ -55,22 +55,22 @@
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.bars %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.cafes %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.landmarks %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place maxzoom="11" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.activities %}
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place minZoom=16 %}
 		{% endif %}
 	{% endfor %}
