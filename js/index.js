@@ -62,7 +62,7 @@ ready().then(async () => {
 			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
 		]).then(([LeafletMarker]) => {
-			document.getElementById('#find-btn').hidden = false;
+			document.getElementById('find-btn').hidden = false;
 			on('#find-btn', ['click'], async () => {
 				const map = document.querySelector('leaflet-map');
 				const ShareButton = await getCustomElement('share-button');
