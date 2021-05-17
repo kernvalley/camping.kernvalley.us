@@ -4,12 +4,15 @@ import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/pwa/install.js';
+// import 'https://cdn.kernvalley.us/components/pwa/install.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { $, ready, getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, on } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
+import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
@@ -26,28 +29,31 @@ $(document.documentElement).toggleClass({
 	$doc.debounce('resize', () => $doc.css({ '--viewport-height': `${window.innherHeight}px` }));
 });
 
+getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
+	on('#install-btn', ['click'], () => new HTMLInstallPromptElement().show())
+		.forEach(el => el.hidden = false);
+});
+
 if (typeof GA === 'string' && GA.length !== 0) {
-	requestIdleCallback(() => {
-		importGa(GA).then(async ({ ga }) => {
-			if (ga instanceof Function) {
-				ga('create', ga, 'auto');
-				ga('set', 'transport', 'beacon');
-				ga('send', 'pageview');
+	loaded().then(() => {
+		requestIdleCallback(() => {
+			importGa(GA).then(async ({ ga }) => {
+				if (ga instanceof Function) {
+					ga('create', ga, 'auto');
+					ga('set', 'transport', 'beacon');
+					ga('send', 'pageview');
 
-				await ready();
-
-				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
-			}
+					$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+					$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+					$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+				}
+			});
 		});
 	});
 }
 
-Promise.allSettled([
-	ready(),
-]).then(async () => {
-	init().catch(console.error);
+ready().then(async () => {
+	init();
 
 	if (location.pathname === '/') {
 		Promise.all([

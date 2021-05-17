@@ -17,6 +17,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/github/user.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
 		'https://cdn.kernvalley.us/components/toast-message.html',
+		'https://cdn.kernvalley.us/components/install/prompt.html',
 
 		/* JS, `customElements`, etc. */
 		'/js/index.min.js',
@@ -29,6 +30,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://cdn.kernvalley.us/components/toast-message.css',
+		'https://cdn.kernvalley.us/components/install/prompt.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
@@ -52,9 +54,11 @@ const config = {
 		'https://server.arcgisonline.com/ArcGIS/rest/services/',
 		'https://i.imgur.com/',
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
+		/\.(jpg|png|gif|svg|webp)$/,
 	],
 	allowedFresh: [
 		'https://api.openweathermap.org/data/',
 		'https://api.github.com/users/',
+		/\.(html|css|js|json)$/,
 	]
 };
