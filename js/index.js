@@ -4,14 +4,13 @@ import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
-// import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { $, on } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
-import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
+import { ready, loaded, on, css, toggleClass } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
@@ -19,15 +18,18 @@ import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cd
 import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { site, GA } from './consts.js';
 
-$(document.documentElement).toggleClass({
+toggleClass([document.documentElement], {
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
 	'no-js': false,
-}).then($doc => {
-	$doc.css({ '--viewport-height': `${window.innerHeight}px` });
-	$doc.debounce('resize', () => $doc.css({ '--viewport-height': `${window.innherHeight}px` }));
 });
+
+css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` });
+
+on([window], ['resize'], debounce(() =>
+	css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` })
+), { passive: true });
 
 getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
 	on('#install-btn', ['click'], () => new HTMLInstallPromptElement().show())
@@ -37,15 +39,15 @@ getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
 if (typeof GA === 'string' && GA.length !== 0) {
 	loaded().then(() => {
 		requestIdleCallback(() => {
-			importGa(GA).then(async ({ ga }) => {
-				if (ga instanceof Function) {
+			importGa(GA).then(async ({ ga, hasGa }) => {
+				if (hasGa()) {
 					ga('create', ga, 'auto');
 					ga('set', 'transport', 'beacon');
 					ga('send', 'pageview');
 
-					$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-					$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-					$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+					on('a[rel~="external"]', ['click'], externalHandler, { passive: true, capture: true });
+					on('a[href^="tel:"]', ['click'], telHandler, { passive: true, capture: true });
+					on('a[href^="mailto:"]', ['click'], mailtoHandler, { passive: true, capture: true });
 				}
 			});
 		});
@@ -60,8 +62,8 @@ ready().then(async () => {
 			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
 		]).then(([LeafletMarker]) => {
-			$('#find-btn').unhide();
-			$('#find-btn').click(async () => {
+			document.getElementById('#find-btn').hidden = false;
+			on('#find-btn', ['click'], async () => {
 				const map = document.querySelector('leaflet-map');
 				const ShareButton = await getCustomElement('share-button');
 				const { coords: { latitude, longitude }} = await map.locate({
