@@ -10,7 +10,7 @@ import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
-import { ready, loaded, on, css, toggleClass } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { ready, loaded, on, css, toggleClass, each, map } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
@@ -54,7 +54,7 @@ if (typeof GA === 'string' && GA.length !== 0) {
 	});
 }
 
-ready().then(async () => {
+ready().then(() => {
 	init();
 
 	if (location.pathname === '/') {
@@ -63,6 +63,38 @@ ready().then(async () => {
 			customElements.whenDefined('leaflet-map'),
 		]).then(([LeafletMarker]) => {
 			document.getElementById('find-btn').hidden = false;
+			on('#query', ['input'], debounce(({ target: { value: query }}) => {
+				if (query.length === 0) {
+					each('leaflet-marker[title][hidden]', el => el.hidden = false);
+				} else {
+					const queryStr = query.toLowerCase();
+					each('leaflet-marker[title]', marker => {
+						marker.hidden = ! marker.title.toLowerCase().includes(queryStr);
+					});
+				}
+
+				const openMarkers = document.querySelectorAll('leaflet-marker:not([hidden])');
+
+				if (openMarkers.length === 1) {
+					const marker = openMarkers.item(0);
+					const map = marker.closest('leaflet-map');
+					marker.open = true;
+					map.flyTo({
+						latitude: marker.latitude,
+						longitude: marker.longitude,
+						zoom: 16,
+					});
+				}
+			}));
+
+			on([document.forms.search], ['reset'], () => {
+				each('leaflet-marker[title][hidden]', el => el.hidden = false);
+			});
+
+			on([document.forms.search], ['submit'], event => event.preventDefault());
+
+			document.forms.search.hidden = false;
+
 			on('#find-btn', ['click'], async () => {
 				const map = document.querySelector('leaflet-map');
 				const ShareButton = await getCustomElement('share-button');
@@ -96,6 +128,14 @@ ready().then(async () => {
 				document.title = `Current Location: ${site.title}`;
 				marker.open = true;
 				map.append(marker);
+			});
+
+			const list = document.getElementById('campgrounds-list');
+
+			new Set(map('leaflet-marker[title]', ({ title }) => title)).forEach(value => {
+				const option = document.createElement('option');
+				option.value = value;
+				list.append(option);
 			});
 		});
 	}
