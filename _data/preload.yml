@@ -46,12 +46,12 @@
   crossOrigin: anonymous
   referrerPolicy: no-referrer
   importance: high
-- href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
+- href: https://unpkg.com/leaflet@1.9.3/dist/leaflet.css
   as: style
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  integrity: sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==
+  integrity: sha512-mD70nAW2ThLsWH0zif8JPbfraZ8hbCtjQ+5RU1m4+ztZq6/MymyZeB55pWsi4YAX+73yvcaJyk61mzfYMvtm9w==
   importance: high
 - href: https://cdn.kernvalley.us/img/markers.svg
   as: image
