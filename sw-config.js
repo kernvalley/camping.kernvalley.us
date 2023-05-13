@@ -21,6 +21,7 @@ const config = {
 
 		/* JS, `customElements`, etc. */
 		'/js/index.min.js',
+		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* CSS */

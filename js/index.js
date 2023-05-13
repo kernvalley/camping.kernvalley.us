@@ -1,21 +1,19 @@
-import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
-import 'https://cdn.kernvalley.us/js/std-js/shims.js';
-import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
-import 'https://cdn.kernvalley.us/components/github/user.js';
-import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/install/prompt.js';
-import 'https://cdn.kernvalley.us/components/ad/block.js';
-import 'https://cdn.kernvalley.us/components/weather/current.js';
-import 'https://cdn.kernvalley.us/components/app/list-button.js';
-import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
-import { ready, loaded, on, css, toggleClass, each, map } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
-import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
+import 'std-js/theme-cookie.js';
+import '@shgysk8zer0/components/share-button.js';
+import '@shgysk8zer0/components/github/user.js';
+import '@shgysk8zer0/components/current-year.js';
+import '@shgysk8zer0/components/install/prompt.js';
+import '@kernvalley/components/ad.js';
+import '@shgysk8zer0/components/weather/current.js';
+import '@shgysk8zer0/components/app/list-button.js';
+import '@shgysk8zer0/components/app/stores.js';
+import { debounce } from 'std-js/events.js';
+import { ready, loaded, on, css, toggleClass, each, map } from 'std-js/dom.js';
+import { getCustomElement } from 'std-js/custom-elements.js';
+import { init } from 'std-js/data-handlers.js';
+import { loadImage } from 'std-js/loader.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from 'std-js/google-analytics.js';
+import { SECONDS } from 'std-js/date-consts.js';
 import { site, GA } from './consts.js';
 
 toggleClass([document.documentElement], {
@@ -108,7 +106,7 @@ ready().then(() => {
 				const h3 = document.createElement('h3');
 				const pos = document.createElement('div');
 				const url = new URL(document.baseURI);
-				const icon = await loadImage('https://cdn.kernvalley.us/img/markers.svg#map-marker', {
+				const icon = await loadImage('@shgysk8zer0/img/markers.svg#map-marker', {
 					height: 30,
 					width: 30,
 					slot: 'icon',

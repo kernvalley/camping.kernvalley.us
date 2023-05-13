@@ -5,9 +5,10 @@
   Referrer-Policy: no-referrer
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrer;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrer;
+  Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js>; rel=preload; as=script;crossorigin;referrerpolicy=no-referrer;
   Link: <//cdn.kernvalley.us/components/leaflet/map.min.js>; rel=preload; as=script; crossorigin; referrerpolicy=no-referrer;
   Feature-Policy: geolocation 'self';
-  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us/apps.json api.github.com/users/ api.openweathermap.org/data/2.5/ www.google-analytics.com/ www.googletagmanager.com/gtag/ baconipsum.com/api/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js 'nonce-0fd18f00-122a-48ef-8af2-d14254dcaf79'; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us/apps.json api.github.com/users/ api.openweathermap.org/data/2.5/ www.google-analytics.com/ www.googletagmanager.com/gtag/ baconipsum.com/api/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
   Referrer-Policy: no-referrer
