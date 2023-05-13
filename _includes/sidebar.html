@@ -2,7 +2,7 @@
 	{% if site.data.keys.openWeatherMap %}{% include common/weather.html appId=site.data.keys.openWeatherMap postalCode=include.postalCode %}{% endif %}
 	{% if include.pinned-posts %}{% include pinned-posts.html count=layout.pinned-posts %}{% endif %}
 	{% for ad in site.data.ads.sidebar %}
-		{% include common/ad.html ad=ad content="sidebar" %}
+		{% include common/krv-ad.html ad=ad content="sidebar" %}
 	{% endfor %}
 	{% if include.recent-posts %}{% include recent-posts.html count=layout.recent-posts %}{% endif %}
 </aside>
