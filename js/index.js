@@ -7,8 +7,10 @@ import '@kernvalley/components/ad.js';
 import '@shgysk8zer0/components/weather/current.js';
 import '@shgysk8zer0/components/app/list-button.js';
 import '@shgysk8zer0/components/app/stores.js';
+import { createPolicy } from 'std-js/trust.js';
+import { getGooglePolicy } from 'std-js/trust-policies.js';
 import { debounce } from 'std-js/events.js';
-import { ready, loaded, on, css, toggleClass, each, map } from 'std-js/dom.js';
+import { ready, on, css, toggleClass, each, map } from 'std-js/dom.js';
 import { getCustomElement } from 'std-js/custom-elements.js';
 import { init } from 'std-js/data-handlers.js';
 import { loadImage } from 'std-js/loader.js';
@@ -23,11 +25,13 @@ toggleClass([document.documentElement], {
 	'no-js': false,
 });
 
-css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` });
 
-on([window], ['resize'], debounce(() =>
-	css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` })
-), { passive: true });
+if (! CSS.supports('height', '100dvh')) {
+	css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` });
+	on([window], ['resize'], debounce(() =>
+		css([document.documentElement], { '--viewport-height': `${window.innerHeight}px` })
+	), { passive: true });
+}
 
 getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
 	on('#install-btn', ['click'], () => new HTMLInstallPromptElement().show())
@@ -35,21 +39,24 @@ getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
 });
 
 if (typeof GA === 'string' && GA.length !== 0) {
-	loaded().then(() => {
-		requestIdleCallback(() => {
-			importGa(GA).then(async ({ ga, hasGa }) => {
-				if (hasGa()) {
-					ga('create', ga, 'auto');
-					ga('set', 'transport', 'beacon');
-					ga('send', 'pageview');
+	const policy = getGooglePolicy();
+	scheduler.postTask(async() => {
+		const { ga, hasGa } = await importGa(GA, {}, { policy });
 
-					on('a[rel~="external"]', ['click'], externalHandler, { passive: true, capture: true });
-					on('a[href^="tel:"]', ['click'], telHandler, { passive: true, capture: true });
-					on('a[href^="mailto:"]', ['click'], mailtoHandler, { passive: true, capture: true });
-				}
-			});
-		});
-	});
+		if (hasGa()) {
+			ga('create', GA, 'auto');
+			ga('set', 'transport', 'beacon');
+			ga('send', 'pageview');
+
+			on('a[rel~="external"]', 'click', externalHandler, { passive: true, capture: true });
+			on('a[href^="tel:"]', 'click', telHandler, { passive: true, capture: true });
+			on('a[href^="mailto:"]', 'click', mailtoHandler, { passive: true, capture: true });
+		}
+	}, { priority: 'background' });
+} else {
+	createPolicy('goog#html', {});
+	createPolicy('goog#script-url', {});
+	getGooglePolicy();
 }
 
 ready().then(() => {
@@ -60,7 +67,6 @@ ready().then(() => {
 			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
 		]).then(([LeafletMarker]) => {
-			document.getElementById('find-btn').hidden = false;
 			on('#query', ['input'], debounce(({ target: { value: query }}) => {
 				if (query.length === 0) {
 					each('leaflet-marker[title][hidden]', el => el.hidden = false);

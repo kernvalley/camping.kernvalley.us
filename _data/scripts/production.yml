@@ -17,3 +17,7 @@
 - src: /js/index.min.js
   referrerPolicy: no-referrer
   defer: true
+- src: https://cdn.kernvalley.us/components/leaflet/map.min.js
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+  defer: true

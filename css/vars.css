@@ -12,6 +12,14 @@
 	--button-primary-active-background-dark: var(--button-primary-active-background-light);
 	--scrollbar-track: var(--primary-color);
 	--scrollbar-color: var(--accent-color);
+	--viewport-height: 100vh;
 	--map-width: 100%;
 	--map-height: calc(90vh - var(--nav-height, 4rem));
 }
+
+@supports (height: 1dvh) {
+	:root {
+		--viewport-height: 100dvh;
+	}
+}
+

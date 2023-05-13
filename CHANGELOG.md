@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Implement import maps
+- Implement trusted types
 - Button for fullscreen
 - Button to show user's current location
 

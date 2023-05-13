@@ -3,6 +3,14 @@
   referrerPolicy: no-referrer
   integrity: sha384-xoY6kDRPTvbDfGdGA3S6Ercudev5mWGBWZIErLB38f7TeN6hV7zof6WBpzMdx/z0
   defer: true
+- src: https://cdn.kernvalley.us/js/security.min.js
+  corssOrigin: anonymous
+  referrerPolicy: no-referrer
+  defer: true
 - src: /js/index.js
   type: module
   referrerPolicy: no-referrer
+- src: https://cdn.kernvalley.us/components/leaflet/map.min.js
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+  defer: true
