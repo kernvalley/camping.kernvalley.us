@@ -13,25 +13,25 @@ const config = {
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* Other HTML */
-		'https://cdn.kernvalley.us/components/leaflet/map.html',
-		'https://cdn.kernvalley.us/components/github/user.html',
-		'https://cdn.kernvalley.us/components/weather/current.html',
-		'https://cdn.kernvalley.us/components/toast-message.html',
-		'https://cdn.kernvalley.us/components/install/prompt.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}weather/current.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}toast-message.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}install/prompt.html',
 
 		/* JS, `customElements`, etc. */
 		'/js/index.min.js',
-		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js',
-		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
+		'{{ site.data.importmap.imports["@shgysk8zer0/polyfills"] }}',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/bundle.min.js',
 
 		/* CSS */
 		'/css/index.min.css',
-		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-		'https://cdn.kernvalley.us/components/leaflet/map.css',
-		'https://cdn.kernvalley.us/components/github/user.css',
-		'https://cdn.kernvalley.us/components/weather/current.css',
-		'https://cdn.kernvalley.us/components/toast-message.css',
-		'https://cdn.kernvalley.us/components/install/prompt.css',
+		'{{ site.data.importmap.imports["leaflet/"] }}dist/leaflet.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}weather/current.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}toast-message.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}install/prompt.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',

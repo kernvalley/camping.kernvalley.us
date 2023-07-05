@@ -1,22 +1,16 @@
-import 'std-js/theme-cookie.js';
-import '@shgysk8zer0/components/share-button.js';
-import '@shgysk8zer0/components/github/user.js';
-import '@shgysk8zer0/components/current-year.js';
-import '@shgysk8zer0/components/install/prompt.js';
-import '@kernvalley/components/ad.js';
-import '@shgysk8zer0/components/weather/current.js';
-import '@shgysk8zer0/components/app/list-button.js';
-import '@shgysk8zer0/components/app/stores.js';
-import { createPolicy } from 'std-js/trust.js';
-import { getGooglePolicy } from 'std-js/trust-policies.js';
-import { debounce } from 'std-js/events.js';
-import { ready, on, css, toggleClass, each, map } from 'std-js/dom.js';
-import { getCustomElement } from 'std-js/custom-elements.js';
-import { init } from 'std-js/data-handlers.js';
-import { loadImage } from 'std-js/loader.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from 'std-js/google-analytics.js';
-import { SECONDS } from 'std-js/date-consts.js';
+import '@shgysk8zer0/kazoo/theme-cookie.js';
+import { createPolicy } from '@shgysk8zer0/kazoo/trust.js';
+import { getGooglePolicy, getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
+import { debounce } from '@shgysk8zer0/kazoo/events.js';
+import { ready, on, css, toggleClass, each, map } from '@shgysk8zer0/kazoo/dom.js';
+import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
+import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
+import { loadImage } from '@shgysk8zer0/kazoo/loader.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
+import { SECONDS } from '@shgysk8zer0/kazoo/date-consts.js';
 import { site, GA } from './consts.js';
+
+getDefaultPolicy();
 
 toggleClass([document.documentElement], {
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
