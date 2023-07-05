@@ -1,16 +1,21 @@
-- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.2.0/all.min.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  integrity: sha384-xoY6kDRPTvbDfGdGA3S6Ercudev5mWGBWZIErLB38f7TeN6hV7zof6WBpzMdx/z0
+  integrity: sha384-8s5Tj7IrKDs3va2EJ3QsRxxApN9vT+thnbA8imc6bwYJA2JaAddVR5b8q5wDkrdv
   defer: true
-- src: https://cdn.kernvalley.us/js/security.min.js
-  corssOrigin: anonymous
+- src: https://unpkg.com/@shgysk8zer0/kazoo@0.2.0/harden.js
+  crossOrigin: anonymous
   referrerPolicy: no-referrer
+  integrity: sha384-55L/wO9o0uIVTeubRIDQB4bewfNqyxrj4OXuxlW24NMEk+ioZwMHVw/tFV78mM+k
   defer: true
 - src: /js/index.js
   type: module
   referrerPolicy: no-referrer
-- src: https://cdn.kernvalley.us/components/leaflet/map.min.js
+- src: /js/components.js
+  type: module
+  referrerPolicy: no-referrer
+- src: https://unpkg.com/@shgysk8zer0/components@0.1.0/leaflet/bundle.min.js
   referrerPolicy: no-referrer
   crossOrigin: anonymous
   defer: true
+  integgrity: sha384-a07cd9Jhws/oRKUy7Akx55U+wMJhx+Rb7zbsxu0aT2JoYA5abs4RZ2uTksbD7zsK

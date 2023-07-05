@@ -1,7 +1,7 @@
-- href: https://api.github.com
-  crossOrigin: anonymous
 - href: https://server.arcgisonline.com
+  crossOrigin: anonymous
   referrerPolicy: no-referrer
+- href: https://api.github.com
   crossOrigin: anonymous
 - href: https://api.openweathermap.org
   referrerPolicy: no-referrer
