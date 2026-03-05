@@ -1,14 +1,12 @@
 import '@shgysk8zer0/kazoo/theme-cookie.js';
-import { createPolicy } from '@shgysk8zer0/kazoo/trust.js';
-import { getGooglePolicy, getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
+import { getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
 import { debounce } from '@shgysk8zer0/kazoo/events.js';
 import { ready, on, css, toggleClass, each, map } from '@shgysk8zer0/kazoo/dom.js';
 import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
 import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
 import { loadImage } from '@shgysk8zer0/kazoo/loader.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
 import { SECONDS } from '@shgysk8zer0/kazoo/date-consts.js';
-import { site, GA } from './consts.js';
+import { site } from './consts.js';
 
 getDefaultPolicy();
 
@@ -32,26 +30,26 @@ getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
 		.forEach(el => el.hidden = false);
 });
 
-if (typeof GA === 'string' && GA.length !== 0) {
-	const policy = getGooglePolicy();
-	scheduler.postTask(async() => {
-		const { ga, hasGa } = await importGa(GA, {}, { policy });
+// if (typeof GA === 'string' && GA.length !== 0) {
+// 	const policy = getGooglePolicy();
+// 	scheduler.postTask(async() => {
+// 		const { ga, hasGa } = await importGa(GA, {}, { policy });
 
-		if (hasGa()) {
-			ga('create', GA, 'auto');
-			ga('set', 'transport', 'beacon');
-			ga('send', 'pageview');
+// 		if (hasGa()) {
+// 			ga('create', GA, 'auto');
+// 			ga('set', 'transport', 'beacon');
+// 			ga('send', 'pageview');
 
-			on('a[rel~="external"]', 'click', externalHandler, { passive: true, capture: true });
-			on('a[href^="tel:"]', 'click', telHandler, { passive: true, capture: true });
-			on('a[href^="mailto:"]', 'click', mailtoHandler, { passive: true, capture: true });
-		}
-	}, { priority: 'background' });
-} else {
-	createPolicy('goog#html', {});
-	createPolicy('goog#script-url', {});
-	getGooglePolicy();
-}
+// 			on('a[rel~="external"]', 'click', externalHandler, { passive: true, capture: true });
+// 			on('a[href^="tel:"]', 'click', telHandler, { passive: true, capture: true });
+// 			on('a[href^="mailto:"]', 'click', mailtoHandler, { passive: true, capture: true });
+// 		}
+// 	}, { priority: 'background' });
+// } else {
+// 	createPolicy('goog#html', {});
+// 	createPolicy('goog#script-url', {});
+// 	getGooglePolicy();
+// }
 
 ready().then(() => {
 	init();
