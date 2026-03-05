@@ -6,7 +6,7 @@ import pkg from './package.json' with { type: 'json' };
 export default getConfig('./js/index.js', {
 	plugins: [
 		rollupImport(importmap),
-		rollupImportMeta({ baseURL: pkg.url }),
+		rollupImportMeta({ baseURL: pkg.homepage }),
 	],
 	format: 'iife',
 	minify: true,
